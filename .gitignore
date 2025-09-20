@@ -42,3 +42,4 @@ ehthumbs.db
 # Temporary files
 .tmp/
 .cache/
+FETCH_HEAD
