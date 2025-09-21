@@ -8,7 +8,7 @@ import '@voilajsx/uikit/styles';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme="ktfb" mode="light" forceConfig={true}>
+    <ThemeProvider theme="elegant" mode="light" forceConfig={true}>
       <App />
     </ThemeProvider>
   </React.StrictMode>
