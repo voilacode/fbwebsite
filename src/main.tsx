@@ -5,6 +5,7 @@ import App from './App';
 import './index.css';
 import './styles/globals.css';
 import '@voilajsx/uikit/styles';
+import './styles/fonts.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -25,11 +25,19 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
           uikit: ['@voilajsx/uikit']
+        },
+        assetFileNames: (assetInfo) => {
+          // Keep font files in assets/files/ to match expected paths
+          if (assetInfo.name && /\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
+            return 'assets/files/[name].[ext]';
+          }
+          return 'assets/[name]-[hash].[ext]';
         }
       }
     }
