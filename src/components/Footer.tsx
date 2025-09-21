@@ -39,16 +39,17 @@ export const Footer: React.FC = () => {
         {/* Branding Section */}
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
-            <div className="w-6 h-6 bg-primary rounded flex items-center justify-center text-primary-foreground font-bold text-xs">
-              UI
-            </div>
-            <span className="font-semibold text-foreground">multiapp</span>
+            <img
+              src="/logo_fresherbot_dark.png"
+              alt="Fresherbot"
+              className="h-8 w-auto"
+            />
           </div>
           
           {/* Copyright */}
           <div className="border-t border-border pt-4">
             <p className="text-sm text-muted-foreground">
-              © 2025 multiapp Multi-Page Template • Built with React Router & Code Splitting
+              © 2025 Voilacode Technologies • Built with ❤️ in India
             </p>
           </div>
         </div>

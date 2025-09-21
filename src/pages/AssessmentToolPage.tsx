@@ -63,41 +63,98 @@ export const AssessmentToolPage: React.FC = () => {
     {
       icon: Target,
       title: "Wide Range of Assessments",
-      description: "Support for multiple test formats to evaluate diverse skills across all domains",
+      description: "Complete assessment suite covering technical skills, cognitive abilities, and personality traits for comprehensive candidate evaluation",
       color: "primary",
-      items: assessmentTypes
+      items: [
+        {
+          title: "MCQs & MAQs",
+          description: "Smart multiple-choice questions with adaptive difficulty, negative marking, and randomized pools to prevent cheating",
+          icon: CheckCircle
+        },
+        {
+          title: "Live Coding Challenges",
+          description: "Real-time programming tests in 15+ languages with instant compilation, test validation, and plagiarism detection",
+          icon: Code
+        },
+        {
+          title: "Communication Tests",
+          description: "Evaluate listening, reading, writing, and speaking skills with AI-powered grading and performance analytics",
+          icon: FileText
+        },
+        {
+          title: "Psychometric Analysis",
+          description: "Personality profiling, cognitive testing, and emotional intelligence assessment with detailed psychology reports",
+          icon: Brain
+        }
+      ]
     },
     {
       icon: Brain,
       title: "AI-Powered Accuracy",
-      description: "Real-time result generation with precision scoring and advanced analytics",
+      description: "Advanced AI technology that eliminates human bias and delivers consistent, precise scoring with enterprise-grade reliability",
       color: "secondary",
       items: [
-        { title: "Real-time Results", description: "Instant precision scoring", icon: Clock },
-        { title: "Advanced Analytics", description: "Strengths, weaknesses, and learning gaps", icon: BarChart3 },
-        { title: "Performance Dashboards", description: "Actionable insights for recruiters", icon: TrendingUp }
+        {
+          title: "Instant Smart Scoring",
+          description: "AI evaluates responses in real-time with 99.8% accuracy across thousands of simultaneous assessments",
+          icon: Clock
+        },
+        {
+          title: "Deep Learning Analytics",
+          description: "Neural networks perform skill mapping, competency analysis, and detailed performance evaluation",
+          icon: BarChart3
+        },
+        {
+          title: "Predictive Intelligence",
+          description: "Machine learning models forecast candidate success, job performance, and cultural fit with statistical confidence",
+          icon: TrendingUp
+        }
       ]
     },
     {
       icon: Shield,
       title: "Enterprise-Grade Security",
-      description: "Test integrity and fairness with comprehensive monitoring",
+      description: "Advanced security protocols ensuring test integrity, preventing cheating, and protecting sensitive data with military-grade encryption and compliance standards",
       color: "accent",
       items: [
-        { title: "Anti-Cheating Mechanisms", description: "Browser monitoring and live alerts", icon: Eye },
-        { title: "Swapping Prevention", description: "Automatic test termination on violations", icon: Lock },
-        { title: "Data Protection", description: "Encrypted storage and compliance", icon: Shield }
+        {
+          title: "Advanced Anti-Cheating",
+          description: "Real-time browser monitoring, tab switching detection, live proctoring alerts, and AI-powered behavior analysis",
+          icon: Eye
+        },
+        {
+          title: "Identity Verification",
+          description: "Biometric authentication, facial recognition, and automatic test termination on suspicious activity",
+          icon: Lock
+        },
+        {
+          title: "Data Protection & Compliance",
+          description: "End-to-end encryption, GDPR compliance, secure cloud storage, and audit trails for complete data security",
+          icon: Shield
+        }
       ]
     },
     {
       icon: Globe,
       title: "Scalability for Institutions",
-      description: "Handle campus-wide assessments with thousands of students simultaneously",
+      description: "Robust cloud infrastructure designed for educational institutions to conduct large-scale assessments, entrance exams, and placement tests with unlimited concurrent users and global accessibility",
       color: "chart1",
       items: [
-        { title: "Campus-Wide Scale", description: "Thousands of students simultaneously", icon: Users },
-        { title: "Zero Downtime", description: "Cloud-based high-performance infrastructure", icon: Zap },
-        { title: "Flexible Scheduling", description: "Custom assessment creation", icon: Clock }
+        {
+          title: "Massive Scale Support",
+          description: "Handle 50,000+ concurrent users, unlimited assessments, and multi-campus deployments with consistent performance",
+          icon: Users
+        },
+        {
+          title: "Enterprise Infrastructure",
+          description: "99.9% uptime guarantee, auto-scaling cloud servers, global CDN, and disaster recovery protocols",
+          icon: Zap
+        },
+        {
+          title: "Institutional Management",
+          description: "Multi-tenant architecture, bulk student enrollment, custom branding, and comprehensive admin controls",
+          icon: Clock
+        }
       ]
     }
   ];
@@ -107,7 +164,8 @@ export const AssessmentToolPage: React.FC = () => {
     "Wide Skill Coverage – From coding to psychometrics, one platform fits all",
     "Unmatched Security – Swapping detection, anti-cheating measures, and secure storage",
     "Seamless User Experience – Simple, fast, and mobile-friendly platform",
-    "Recruiter & Institution Dashboards – One-stop analytics for quick hiring decisions"
+    "Recruiter & Institution Dashboards – One-stop analytics for quick hiring decisions",
+    "Global Scalability & Support – Cloud infrastructure with 24/7 technical assistance worldwide"
   ];
 
   const useCases = [
@@ -137,55 +195,115 @@ export const AssessmentToolPage: React.FC = () => {
         title="Fresherbot Assessment Tool - Smarter, Secure, and Scalable Online Assessments"
         description="AI-powered assessment platform with enterprise-grade security, wide skill coverage, and real-time analytics for campus recruitment and skill evaluation."
       />
-      <div className="space-y-16">
+      <div className="space-y-20">
         {/* Hero Section */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative text-center py-16 px-8">
-            <div className="space-y-8 max-w-5xl mx-auto">
-              <div className="space-y-2">
-                <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                  <Brain className="w-4 h-4 mr-2" />
-                  Fresherbot Assessment Tool
-                </Badge>
+        <section className="relative overflow-hidden py-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-background to-secondary/3" />
+
+          <div className="relative container mx-auto ">
+            <div className="grid lg:grid-cols-5 gap-16 items-center">
+              {/* Left Content */}
+              <div className="lg:col-span-3 space-y-10">
+                <div className="space-y-6">
+                  <Badge variant="secondary" className="bg-muted text-foreground inline-flex items-center gap-2 px-4 py-2">
+                    <Brain className="w-4 h-4" />
+                    AI-Powered Assessment Platform
+                  </Badge>
+
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-primary via-accent to-orange-500 bg-clip-text text-transparent">
+                      Next-Generation
+                    </span>
+                    <br />
+                    Assessment Platform
+                  </h1>
+
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
+                    Transform your recruitment with <strong className="text-foreground">secure</strong>, <strong className="text-foreground">scalable</strong>, and <strong className="text-foreground">intelligent</strong> assessments powered by AI.
+                  </p>
+                </div>
+
+                <div className="grid sm:grid-cols-3 gap-6 py-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Enterprise Security</div>
+                      <div className="text-xs text-muted-foreground">Anti-cheating measures</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Brain className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">AI Analytics</div>
+                      <div className="text-xs text-muted-foreground">Real-time insights</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Globe className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Global Scale</div>
+                      <div className="text-xs text-muted-foreground">Thousands of users</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className=" text-lg px-8 py-6 shadow-lg" asChild>
+                    <Link to="/demo">
+                      <PlayCircle className="mr-2 h-5 w-5" />
+                      Get Started Free
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                    <Link to="/contact">
+                      Schedule Demo
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="flex items-center gap-6 text-sm text-muted-foreground pt-4">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    No setup fees
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    14-day free trial
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Cancel anytime
+                  </div>
+                </div>
               </div>
-              
-              <div className="space-y-4">
-                <h1 className="voila-heading text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Smarter, Secure, and Scalable Online Assessments
-                </h1>
-              </div>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                The <strong className="text-primary">Fresherbot Assessment Tool</strong> is designed to bring{' '}
-                <Badge variant="outline" className="mx-1">transparency</Badge>,{' '}
-                <Badge variant="outline" className="mx-1">accuracy</Badge>, and{' '}
-                <Badge variant="outline" className="mx-1">security</Badge>{' '}
-                into campus recruitment and skill evaluation.
-              </p>
+              {/* Right Image */}
+              <div className="lg:col-span-2 relative pr-10">
+                <div className="relative">
+                  <img
+                    src="https://i.ibb.co/mCQ4LS9f/3d08c7fa-6415-4666-9e17-114f5ca0ac62.jpg"
+                    alt="Assessment Platform Dashboard"
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                  />
 
-              <Alert className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5 max-w-4xl mx-auto">
-                <Sparkles className="h-5 w-5" />
-                <AlertDescription className="text-lg">
-                  Built for institutions and recruiters, our platform goes beyond traditional tests by combining{' '}
-                  <strong>AI-driven analytics</strong> with <strong>robust monitoring features</strong> — ensuring every result truly reflects the candidate's skills.
-                </AlertDescription>
-              </Alert>
+                  {/* Floating Stats Card */}
+                  <div className="absolute -top-4 -left-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">99.9%</div>
+                    <div className="text-sm text-muted-foreground">Uptime</div>
+                  </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Button size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/demo">
-                    <PlayCircle className="mr-2 h-5 w-5" />
-                    Request a Demo
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/contact">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Contact Us
-                  </Link>
-                </Button>
+                  <div className="absolute -bottom-4 -right-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">50K+</div>
+                    <div className="text-sm text-muted-foreground">Assessments</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -198,38 +316,67 @@ export const AssessmentToolPage: React.FC = () => {
           <div className="text-center space-y-4">
             <Badge variant="secondary" className="px-4 py-2">Platform Features</Badge>
             <h2 className="text-4xl font-bold">Key Features</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive assessment capabilities powered by cutting-edge technology
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              Comprehensive online assessment capabilities powered by cutting-edge artificial intelligence technology, designed for educational institutions, corporate recruitment, and skill evaluation. Our advanced platform delivers secure, scalable, and intelligent testing solutions with real-time analytics, automated grading, and enterprise-grade security features to streamline your hiring process and academic assessments.
             </p>
           </div>
           
-          <div className="space-y-12">
+          <div className="space-y-16">
             {keyFeatures.map((feature, index) => (
-              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                    <feature.icon className={`h-10 w-10 text-${feature.color}`} />
+              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300 overflow-hidden">
+                <div className={`grid lg:grid-cols-5 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                  {/* Feature Image */}
+                  <div className={`lg:col-span-2 relative ${index % 2 === 1 ? 'lg:col-start-4' : ''} flex items-center justify-center p-6`}>
+                    <div className="relative w-full max-w-sm mx-auto">
+                      <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl">
+                        <div className={`absolute inset-0 bg-gradient-to-br from-${feature.color}/20 via-${feature.color}/10 to-transparent z-10`} />
+                        <img
+                          src={
+                            index === 0 ? "/product/assessment/Wide Range of Assessments.jpg" :
+                            index === 1 ? "/product/assessment/AI-Powered Accuracy.jpg" :
+                            index === 2 ? "/product/assessment/Enterprise-Grade Security.jpg" :
+                            index === 3 ? "/product/assessment/Scalability for Institutions.jpg" :
+                            "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                          }
+                          alt={`${feature.title} illustration`}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className={`absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-${feature.color}/40 to-${feature.color}/30 rounded-2xl flex items-center justify-center z-20 backdrop-blur-sm border border-white/20`}>
+                          <feature.icon className={`h-7 w-7 text-${feature.color}`} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <CardTitle className="text-2xl">{index + 1}. {feature.title}</CardTitle>
-                  <CardDescription className="text-lg">{feature.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {feature.items.map((item, itemIndex) => (
-                      <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors">
-                        <CardContent className="p-6 space-y-3">
-                          <div className={`w-12 h-12 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-lg flex items-center justify-center`}>
-                            <item.icon className={`h-6 w-6 text-${feature.color}`} />
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-semibold">{item.title}</h4>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
+
+                  {/* Feature Content */}
+                  <div className={`lg:col-span-3 p-8 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <Badge variant="secondary" className="px-3 py-1">
+                          Feature {index + 1}
+                        </Badge>
+                        <CardTitle className="text-3xl font-bold">{feature.title}</CardTitle>
+                        <CardDescription className="text-lg leading-relaxed">{feature.description}</CardDescription>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {feature.items.map((item, itemIndex) => (
+                          <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors py-3 px-1 my-1 ">
+                            <CardContent className="px-3 py-2 flex items-start gap-3">
+                              <div className={`w-8 h-8 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                                <item.icon className={`h-4 w-4 text-${feature.color}`} />
+                              </div>
+                              <div className="space-y-1">
+                                <h4 className="font-semibold text-base leading-tight">{item.title}</h4>
+                                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             ))}
           </div>
@@ -256,107 +403,139 @@ export const AssessmentToolPage: React.FC = () => {
             </TabsList>
             
             <TabsContent value="mcq" className="mt-8">
-              <Card className="border-2">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="h-8 w-8 text-primary" />
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                      src="/product/assessment/mcq.png"
+                      alt="MCQ Assessment Interface"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
                   </div>
-                  <CardTitle className="text-2xl">MCQs & MAQs</CardTitle>
-                  <CardDescription className="text-lg">Objective assessments for quick evaluation</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Single Choice</div>
-                      <div className="text-sm text-muted-foreground">Traditional multiple choice questions</div>
-                    </div>
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Multiple Choice</div>
-                      <div className="text-sm text-muted-foreground">Multiple correct answers (MAQs)</div>
-                    </div>
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">True/False</div>
-                      <div className="text-sm text-muted-foreground">Binary choice questions</div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <CardTitle className="text-2xl p-0">MCQs & MAQs</CardTitle>
+                        <CardDescription className="text-lg">Objective assessments for quick evaluation</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Single Choice</div>
+                          <div className="text-sm text-muted-foreground">Traditional multiple choice questions</div>
+                        </div>
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Multiple Choice</div>
+                          <div className="text-sm text-muted-foreground">Multiple correct answers (MAQs)</div>
+                        </div>
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">True/False</div>
+                          <div className="text-sm text-muted-foreground">Binary choice questions</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             </TabsContent>
             
             <TabsContent value="subjective" className="mt-8">
-              <Card className="border-2">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <FileText className="h-8 w-8 text-secondary" />
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                      src="/product/assessment/subjective.png"
+                      alt="Subjective Assessment Interface"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
                   </div>
-                  <CardTitle className="text-2xl">Fills & Subjective</CardTitle>
-                  <CardDescription className="text-lg">Assess conceptual understanding and problem-solving</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Fill in the Blanks</div>
-                      <div className="text-sm text-muted-foreground">Test specific knowledge points</div>
-                    </div>
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Essay Questions</div>
-                      <div className="text-sm text-muted-foreground">Long-form analytical responses</div>
-                    </div>
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Short Answers</div>
-                      <div className="text-sm text-muted-foreground">Concise problem-solving</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            
-            <TabsContent value="coding" className="mt-8">
-              <Card className="border-2">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Code className="h-8 w-8 text-accent" />
-                  </div>
-                  <CardTitle className="text-2xl">Coding Challenges</CardTitle>
-                  <CardDescription className="text-lg">Real-time coding assessments in popular languages</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {['C', 'C++', 'C#', 'Java', 'Python', 'JavaScript', 'Go', 'Rust'].map((lang, index) => (
-                      <div key={index} className="bg-muted/50 border rounded-lg p-3 text-center">
-                        <div className="font-medium text-sm">{lang}</div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <CardTitle className="text-2xl mb-2">Fills & Subjective</CardTitle>
+                        <CardDescription className="text-lg">Assess conceptual understanding and problem-solving</CardDescription>
                       </div>
-                    ))}
+                      <div className="grid grid-cols-1 gap-4">
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Fill in the Blanks</div>
+                          <div className="text-sm text-muted-foreground">Test specific knowledge points</div>
+                        </div>
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Essay Questions</div>
+                          <div className="text-sm text-muted-foreground">Long-form analytical responses</div>
+                        </div>
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Short Answers</div>
+                          <div className="text-sm text-muted-foreground">Concise problem-solving</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             </TabsContent>
-            
+
+            <TabsContent value="coding" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                      src="/product/assessment/coding.png"
+                      alt="Coding Challenge Interface"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <CardTitle className="text-2xl mb-2">Coding Challenges</CardTitle>
+                        <CardDescription className="text-lg">Real-time coding assessments in popular languages</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        {['C', 'C++', 'C#', 'Java', 'Python', 'JavaScript', 'Go', 'Rust'].map((lang, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-3 text-center">
+                            <div className="font-medium text-sm">{lang}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
             <TabsContent value="psychometric" className="mt-8">
-              <Card className="border-2">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-chart1/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Brain className="h-8 w-8 text-chart1" />
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                      src="/product/assessment/psychometic.png"
+                      alt="Psychometric Assessment Interface"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
                   </div>
-                  <CardTitle className="text-2xl">Psychometric Tests</CardTitle>
-                  <CardDescription className="text-lg">Personality, behavior, and aptitude evaluations</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Personality Assessment</div>
-                      <div className="text-sm text-muted-foreground">Behavioral traits and characteristics</div>
-                    </div>
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Aptitude Tests</div>
-                      <div className="text-sm text-muted-foreground">Logical and analytical reasoning</div>
-                    </div>
-                    <div className="bg-muted/50 border rounded-lg p-4 text-center">
-                      <div className="font-semibold mb-2">Workplace Readiness</div>
-                      <div className="text-sm text-muted-foreground">Professional skills evaluation</div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <CardTitle className="text-2xl mb-2">Psychometric Tests</CardTitle>
+                        <CardDescription className="text-lg">Personality, behavior, and aptitude evaluations</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Personality Assessment</div>
+                          <div className="text-sm text-muted-foreground">Behavioral traits and characteristics</div>
+                        </div>
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Aptitude Tests</div>
+                          <div className="text-sm text-muted-foreground">Logical and analytical reasoning</div>
+                        </div>
+                        <div className="bg-muted/50 border rounded-lg p-4">
+                          <div className="font-semibold mb-2">Workplace Readiness</div>
+                          <div className="text-sm text-muted-foreground">Professional skills evaluation</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             </TabsContent>
           </Tabs>
@@ -408,11 +587,20 @@ export const AssessmentToolPage: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {useCases.map((useCase, index) => (
-              <Card key={index} className={`border-2 hover:border-${useCase.color}/50 transition-all duration-300 hover:shadow-xl group text-center`}>
-                <CardHeader className="space-y-6">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${useCase.color}/20 to-${useCase.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                    <useCase.icon className={`h-10 w-10 text-${useCase.color}`} />
-                  </div>
+              <Card key={index} className={`border-2 hover:border-${useCase.color}/50 transition-all duration-300 hover:shadow-xl group overflow-hidden`}>
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={
+                      index === 0 ? "/product/assessment/college.png" :
+                      index === 1 ? "/product/assessment/company.png" :
+                      index === 2 ? "/product/assessment/institute.png" :
+                      "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                    }
+                    alt={`${useCase.title} illustration`}
+                    className="w-full h-full object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <CardHeader className="text-center space-y-4">
                   <div className="space-y-3">
                     <CardTitle className="text-xl">{useCase.title}</CardTitle>
                     <CardDescription className="text-base leading-relaxed">{useCase.description}</CardDescription>
@@ -424,41 +612,62 @@ export const AssessmentToolPage: React.FC = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-12 text-center space-y-8">
-            <div className="space-y-4">
-              <Badge variant="secondary" className="px-4 py-2 text-base">
-                <Zap className="w-4 h-4 mr-2" />
-                Get Started Today
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold">Ready to Experience the Future of Assessments?</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Join thousands of institutions and companies who trust Fresherbot for secure, scalable, 
-                and AI-powered assessments. Transform your recruitment process today.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-              <Button size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/demo">
-                  <PlayCircle className="mr-2 h-5 w-5" />
-                  Request a Demo
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/contact">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Contact Us
-                </Link>
-              </Button>
-            </div>
-            
-            <div className="pt-6">
-              <div className="text-sm text-muted-foreground">
-                ✅ <strong>Enterprise-Grade Security</strong> • <strong>AI-Powered Analytics</strong> • <strong>24/7 Support</strong>
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl -z-10" />
+
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-12">
+            {/* Left Content */}
+            <div className="space-y-8 text-center lg:text-left relative z-20">
+              <div className="space-y-4">
+                <Badge variant="secondary" className="px-4 py-2 text-base">
+                  <Zap className="w-4 h-4 mr-2" />
+                  Get Started Today
+                </Badge>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Ready to Experience the Future of Assessments?</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Join thousands of institutions and companies who trust Fresherbot for secure, scalable,
+                  and AI-powered assessments. Transform your recruitment process today.
+                </p>
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 relative z-30">
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/demo">
+                    <PlayCircle className="mr-2 h-5 w-5" />
+                    Request a Demo
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/contact">
+                    <Phone className="mr-2 h-5 w-5" />
+                    Contact Us
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="pt-6">
+                <div className="text-sm text-muted-foreground flex flex-wrap justify-center lg:justify-start gap-4">
+                  <span>✅ <strong>Enterprise-Grade Security</strong></span>
+                  <span>✅ <strong>AI-Powered Analytics</strong></span>
+                  <span>✅ <strong>24/7 Support</strong></span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative order-first lg:order-last">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+                <img
+                  src="/product/assessment/ready to experience.png"
+                  alt="Ready to Experience Assessment Platform"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Floating Elements - Behind content */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent/10 rounded-full blur-xl -z-10" />
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-xl -z-10" />
             </div>
           </div>
         </section>
