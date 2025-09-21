@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Footer as UIFooter } from '@voilajsx/uikit/footer';
 import type { NavigationItem } from '@voilajsx/uikit';
+import { asset } from '../utils/asset';
 
 // Footer navigation
 const footerNavigation: NavigationItem[] = [
@@ -40,7 +41,7 @@ export const Footer: React.FC = () => {
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
             <img
-              src="/fbwebsite/logo_fresherbot_dark.png"
+              src={asset('logo_fresherbot_dark.png')}
               alt="Fresherbot"
               className="h-8 w-auto"
             />

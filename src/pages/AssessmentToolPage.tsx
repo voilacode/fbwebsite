@@ -28,6 +28,7 @@ import {
   PlayCircle
 } from 'lucide-react';
 import { SEO } from '../components';
+import { asset } from '../utils/asset';
 
 export const AssessmentToolPage: React.FC = () => {
 
@@ -169,7 +170,7 @@ export const AssessmentToolPage: React.FC = () => {
       />
       <div className="space-y-20">
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-6">
+        <section className="relative overflow-hidden md:py-6">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-background to-secondary/3" />
 
           <div className="relative container mx-auto ">
@@ -257,10 +258,10 @@ export const AssessmentToolPage: React.FC = () => {
               </div>
 
               {/* Right Image */}
-              <div className="lg:col-span-2 relative pr-10">
+              <div className="lg:col-span-2 relative md:pr-10">
                 <div className="relative">
                   <img
-                    src="https://i.ibb.co/mCQ4LS9f/3d08c7fa-6415-4666-9e17-114f5ca0ac62.jpg"
+                    src={asset('product/assessment/assessment_hero_dashboard.jpg')}
                     alt="Assessment Platform Dashboard"
                     className="w-full h-auto rounded-2xl shadow-2xl"
                   />
@@ -295,7 +296,7 @@ export const AssessmentToolPage: React.FC = () => {
           
           <div className="space-y-16">
             {keyFeatures.map((feature, index) => (
-              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300 overflow-hidden my-6">
                 <div className={`grid lg:grid-cols-5 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                   {/* Feature Image */}
                   <div className={`lg:col-span-2 relative ${index % 2 === 1 ? 'lg:col-start-4' : ''} flex items-center justify-center p-6`}>
@@ -304,10 +305,10 @@ export const AssessmentToolPage: React.FC = () => {
                         <div className={`absolute inset-0 bg-gradient-to-br from-${feature.color}/20 via-${feature.color}/10 to-transparent z-10`} />
                         <img
                           src={
-                            index === 0 ? "/fbwebsite/product/assessment/Wide Range of Assessments.jpg" :
-                            index === 1 ? "/fbwebsite/product/assessment/AI-Powered Accuracy.jpg" :
-                            index === 2 ? "/fbwebsite/product/assessment/Enterprise-Grade Security.jpg" :
-                            index === 3 ? "/fbwebsite/product/assessment/Scalability for Institutions.jpg" :
+                            index === 0 ? asset('product/assessment/assessment_wide_range.jpg') :
+                            index === 1 ? asset('product/assessment/assessment_ai_powered.jpg') :
+                            index === 2 ? asset('product/assessment/assessment_security.jpg') :
+                            index === 3 ? asset('product/assessment/assessment_scalability.jpg') :
                             "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                           }
                           alt={`${feature.title} illustration`}
@@ -321,7 +322,7 @@ export const AssessmentToolPage: React.FC = () => {
                   </div>
 
                   {/* Feature Content */}
-                  <div className={`lg:col-span-3 p-8 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                  <div className={`lg:col-span-3 p-4 md:p-8 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                     <div className="space-y-6">
                       <div className="space-y-4">
                         <Badge variant="secondary" className="px-3 py-1">
@@ -379,7 +380,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8">
                     <img
-                      src="/fbwebsite/product/assessment/mcq.png"
+                      src={asset('product/assessment/assessment_mcq.png')}
                       alt="MCQ Assessment Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -415,7 +416,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8 order-last lg:order-first">
                     <img
-                      src="/fbwebsite/product/assessment/subjective.png"
+                      src={asset('product/assessment/assessment_subjective.png')}
                       alt="Subjective Assessment Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -451,7 +452,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8">
                     <img
-                      src="/fbwebsite/product/assessment/coding.png"
+                      src={asset('product/assessment/assessment_coding.png')}
                       alt="Coding Challenge Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -480,7 +481,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8 order-last lg:order-first">
                     <img
-                      src="/fbwebsite/product/assessment/psychometic.png"
+                      src={asset('product/assessment/assessment_psychometric.png')}
                       alt="Psychometric Assessment Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -518,7 +519,7 @@ export const AssessmentToolPage: React.FC = () => {
         {/* Why Choose */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative p-10 space-y-8">
+          <div className="relative p-4 md:p-10 space-y-8">
             <div className="text-center space-y-4">
               <Badge variant="secondary" className="px-4 py-2">
                 <Award className="w-4 h-4 mr-2" />
@@ -563,9 +564,9 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={
-                      index === 0 ? "/fbwebsite/product/assessment/college.png" :
-                      index === 1 ? "/fbwebsite/product/assessment/company.png" :
-                      index === 2 ? "/fbwebsite/product/assessment/institute.png" :
+                      index === 0 ? asset('product/assessment/usecase_college.png') :
+                      index === 1 ? asset('product/assessment/usecase_company.png') :
+                      index === 2 ? asset('product/assessment/usecase_institute.png') :
                       "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                     }
                     alt={`${useCase.title} illustration`}
@@ -587,7 +588,7 @@ export const AssessmentToolPage: React.FC = () => {
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl -z-10" />
 
-          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-12">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-4 md:p-12">
             {/* Left Content */}
             <div className="space-y-8 text-center lg:text-left relative z-20">
               <div className="space-y-4">
@@ -631,7 +632,7 @@ export const AssessmentToolPage: React.FC = () => {
             <div className="relative order-first lg:order-last">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <img
-                  src="/fbwebsite/product/assessment/ready to experience.png"
+                  src={asset('product/assessment/assessment_ready_to_experience.png')}
                   alt="Ready to Experience Assessment Platform"
                   className="w-full h-full object-cover"
                 />

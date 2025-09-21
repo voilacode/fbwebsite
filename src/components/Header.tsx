@@ -19,6 +19,7 @@ import {
   UserPlus,
   LogIn
 } from 'lucide-react';
+import { asset } from '../utils/asset';
 
 // Navigation configuration
 const navigationItems: NavigationItem[] = [
@@ -62,7 +63,7 @@ const navigationItems: NavigationItem[] = [
 const Logo: React.FC = () => (
   <div className="flex items-center gap-3">
     <img
-      src="/fbwebsite/logo_fresherbot_light.png"
+      src={asset('logo_fresherbot_light.png')}
       alt="Fresherbot"
       className="h-8 w-auto"
     />
