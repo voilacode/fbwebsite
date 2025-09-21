@@ -3,22 +3,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voil
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
-import { 
-  Brain, 
-  GraduationCap, 
-  Target, 
+import {
+  Brain,
+  GraduationCap,
+  Target,
   Eye,
   BookOpen,
   Users,
   Shield,
-  Zap,
   Heart,
   Handshake,
   Globe,
   CheckCircle,
   TrendingUp,
-  Award,
-  Clock,
   Building2,
   Lightbulb,
   Star,

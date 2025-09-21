@@ -83,7 +83,7 @@ const LayoutWrapper: React.FC = () => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/fbwebsite">
       <LayoutWrapper />
     </Router>
   );

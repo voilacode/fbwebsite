@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
             <img
-              src="/logo_fresherbot_dark.png"
+              src="/fbwebsite/logo_fresherbot_dark.png"
               alt="Fresherbot"
               className="h-8 w-auto"
             />

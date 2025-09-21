@@ -5,14 +5,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voil
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@voilajsx/uikit/tabs';
 import { Progress } from '@voilajsx/uikit/progress';
-import { 
-  BookOpen, 
-  Play, 
-  TrendingUp, 
-  CheckCircle, 
-  Users, 
+import {
+  BookOpen,
+  Play,
+  TrendingUp,
+  CheckCircle,
+  Users,
   Building2,
   GraduationCap,
   BarChart3,
@@ -22,7 +21,6 @@ import {
   Target,
   Sparkles,
   ArrowRight,
-  Phone,
   PlayCircle,
   Video,
   PenTool,
@@ -30,7 +28,6 @@ import {
   FileText,
   Monitor,
   Zap,
-  Star,
   Code,
   Briefcase,
   MessageCircle,

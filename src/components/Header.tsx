@@ -1,17 +1,10 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Header as UIHeader, HeaderLogo, HeaderNav } from '@voilajsx/uikit/header';
-import { Button } from '@voilajsx/uikit/button';
-import { useTheme } from '@voilajsx/uikit/theme-provider';
 import type { NavigationItem } from '@voilajsx/uikit';
 import {
   Home,
-  Layout,
-  Palette,
-  BookOpen,
   Mail,
-  Sun,
-  Moon,
   Package,
   Brain,
   GraduationCap,
@@ -69,7 +62,7 @@ const navigationItems: NavigationItem[] = [
 const Logo: React.FC = () => (
   <div className="flex items-center gap-3">
     <img
-      src="/logo_fresherbot_light.png"
+      src="/fbwebsite/logo_fresherbot_light.png"
       alt="Fresherbot"
       className="h-8 w-auto"
     />

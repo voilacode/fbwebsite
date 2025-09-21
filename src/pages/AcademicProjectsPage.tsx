@@ -7,38 +7,27 @@ import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Progress } from '@voilajsx/uikit/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
-import { 
-  BookOpen, 
-  Code, 
-  TrendingUp, 
-  CheckCircle, 
-  Users,
+import {
+  BookOpen,
+  Code,
+  CheckCircle,
   Lightbulb,
-  BarChart3,
   MessageCircle,
-  Globe,
   Award,
   Target,
-  Sparkles,
   ArrowRight,
-  Phone,
-  PlayCircle,
   UserCheck,
   FileText,
-  Clock,
   Zap,
   ChevronRight,
   Trophy,
   Briefcase,
-  GraduationCap,
   HandHeart,
   Eye,
-  Settings,
   Brain,
   Wrench,
   Cpu,
   Database,
-  Smartphone,
   PenTool,
   Search,
   Group
@@ -386,7 +375,7 @@ export const AcademicProjectsPage: React.FC = () => {
               <CardContent className="p-8">
                 <div className="flex items-center gap-4 justify-center mb-4">
                   <Avatar className="h-16 w-16 border-2 border-secondary/20">
-                    <AvatarImage src="/api/placeholder/64/64" />
+                    <AvatarImage src="api/placeholder/64/64" />
                     <AvatarFallback className="bg-secondary/10 text-secondary font-bold text-lg">MT</AvatarFallback>
                   </Avatar>
                   <div className="text-left">

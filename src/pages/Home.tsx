@@ -3,23 +3,18 @@ import { Link } from 'react-router-dom';
 import { Button } from '@voilajsx/uikit/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voilajsx/uikit/card';
 import { Badge } from '@voilajsx/uikit/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
 import { Separator } from '@voilajsx/uikit/separator';
 import { Progress } from '@voilajsx/uikit/progress';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@voilajsx/uikit/tabs';
-import { useTheme } from '@voilajsx/uikit/theme-provider';
-import { 
-  ArrowRight, Users, Brain, Target, Shield, Award, TrendingUp, 
-  CheckCircle, Star, Quote, Building2, GraduationCap, Briefcase,
-  BarChart3, Clock, Globe, Zap, ChevronRight, Sparkles, Play,
-  Monitor, Database, LineChart, PieChart, Activity, Rocket,
-  Eye, Lock, Cpu, Network, Calendar, Mail, Phone, MapPin
+import {
+  ArrowRight, Users, Brain, Target, Shield, Award, TrendingUp,
+  CheckCircle, Building2, GraduationCap, Globe, Zap, Sparkles, Play,
+  Rocket, Mail, Phone, MapPin
 } from 'lucide-react';
 import { SEO } from '../components';
 
 export const HomePage: React.FC = () => {
-  const { theme } = useTheme();
 
   const stats = [
     { label: "Students Trained", value: "50,000+", growth: 85, icon: Users },
@@ -138,7 +133,7 @@ export const HomePage: React.FC = () => {
                 <Card className="border-2 shadow-xl">
                   <CardContent className="p-2">
                     <img 
-                      src="/api/placeholder/600/400" 
+                      src="api/placeholder/600/400" 
                       alt="Fresherbot Platform Dashboard"
                       className="w-full h-auto rounded-lg"
                     />

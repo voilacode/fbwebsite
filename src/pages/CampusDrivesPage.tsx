@@ -7,36 +7,29 @@ import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Progress } from '@voilajsx/uikit/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
-import { 
-  Building2, 
-  Brain, 
-  TrendingUp, 
-  CheckCircle, 
+import {
+  Building2,
+  Brain,
+  TrendingUp,
+  CheckCircle,
   Users,
   Calendar,
   BarChart3,
   MessageCircle,
-  Globe,
-  Award,
   Target,
   Sparkles,
   ArrowRight,
-  Phone,
-  PlayCircle,
   UserCheck,
   FileText,
-  Clock,
   Zap,
   ChevronRight,
   Trophy,
-  BookOpen,
   Briefcase,
-  GraduationCap,
   HandHeart,
   Eye,
   Settings,
-  MonitorSpeaker,
-  Handshake
+  Handshake,
+  PlayCircle
 } from 'lucide-react';
 import { SEO } from '../components';
 
@@ -347,7 +340,7 @@ export const CampusDrivesPage: React.FC = () => {
               <CardContent className="p-8">
                 <div className="flex items-center gap-4 justify-center mb-4">
                   <Avatar className="h-16 w-16 border-2 border-secondary/20">
-                    <AvatarImage src="/api/placeholder/64/64" />
+                    <AvatarImage src="api/placeholder/64/64" />
                     <AvatarFallback className="bg-secondary/10 text-secondary font-bold text-lg">HR</AvatarFallback>
                   </Avatar>
                   <div className="text-left">

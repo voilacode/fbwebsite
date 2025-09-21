@@ -7,31 +7,26 @@ import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Progress } from '@voilajsx/uikit/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
-import { 
-  GraduationCap, 
-  Calculator, 
-  TrendingUp, 
-  CheckCircle, 
+import {
+  GraduationCap,
+  Calculator,
+  TrendingUp,
+  CheckCircle,
   Building2,
   Code,
   BarChart3,
   MessageCircle,
-  Globe,
   Award,
   Target,
-  Sparkles,
   ArrowRight,
-  Phone,
   PlayCircle,
   Users,
   Briefcase,
-  Star,
   Brain,
   Lightbulb,
   UserCheck,
   Mic,
   FileText,
-  Clock,
   Zap,
   ChevronRight,
   Trophy,
@@ -350,7 +345,7 @@ export const CRTTrainingPage: React.FC = () => {
               <CardContent className="p-8">
                 <div className="flex items-center gap-4 justify-center mb-4">
                   <Avatar className="h-16 w-16 border-2 border-primary/20">
-                    <AvatarImage src="/api/placeholder/64/64" />
+                    <AvatarImage src="api/placeholder/64/64" />
                     <AvatarFallback className="bg-primary/10 text-primary font-bold text-lg">ET</AvatarFallback>
                   </Avatar>
                   <div className="text-left">

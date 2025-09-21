@@ -6,28 +6,24 @@ import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Progress } from '@voilajsx/uikit/progress';
-import { 
-  Users, 
-  Calendar, 
-  TrendingUp, 
-  CheckCircle, 
+import {
+  Users,
+  Calendar,
+  TrendingUp,
+  CheckCircle,
   Building2,
   GraduationCap,
   BarChart3,
-  Clock,
-  Globe,
   Award,
   Target,
   Sparkles,
   ArrowRight,
-  Phone,
   PlayCircle,
   FileText,
   ClipboardList,
   UserCheck,
   BookOpen,
   Settings,
-  Monitor,
   Zap,
   Database,
   PieChart,

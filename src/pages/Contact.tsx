@@ -5,10 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voil
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
   Building2,
   Users,
   GraduationCap,
@@ -18,7 +18,6 @@ import {
   Clock,
   Globe,
   Zap,
-  Target,
   MessageCircle,
   PlayCircle,
   CheckCircle,

@@ -4,7 +4,6 @@ import { Button } from '@voilajsx/uikit/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voilajsx/uikit/card';
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
-import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@voilajsx/uikit/tabs';
 import { 
   Brain, 
@@ -24,7 +23,6 @@ import {
   Globe,
   Award,
   Target,
-  Sparkles,
   ArrowRight,
   Phone,
   PlayCircle
@@ -32,32 +30,6 @@ import {
 import { SEO } from '../components';
 
 export const AssessmentToolPage: React.FC = () => {
-  const assessmentTypes = [
-    {
-      title: "MCQs & MAQs",
-      description: "Objective assessments for quick evaluation",
-      icon: CheckCircle,
-      color: "primary"
-    },
-    {
-      title: "Fills & Subjective",
-      description: "Tests that assess conceptual understanding and problem-solving",
-      icon: FileText,
-      color: "secondary"
-    },
-    {
-      title: "Coding Challenges",
-      description: "Real-time coding assessments in C, C++, C#, Java, Python, and more",
-      icon: Code,
-      color: "accent"
-    },
-    {
-      title: "Psychometric Tests",
-      description: "Personality, behavior, and aptitude evaluations to measure workplace readiness",
-      icon: Brain,
-      color: "chart1"
-    }
-  ];
 
   const keyFeatures = [
     {
@@ -332,10 +304,10 @@ export const AssessmentToolPage: React.FC = () => {
                         <div className={`absolute inset-0 bg-gradient-to-br from-${feature.color}/20 via-${feature.color}/10 to-transparent z-10`} />
                         <img
                           src={
-                            index === 0 ? "/product/assessment/Wide Range of Assessments.jpg" :
-                            index === 1 ? "/product/assessment/AI-Powered Accuracy.jpg" :
-                            index === 2 ? "/product/assessment/Enterprise-Grade Security.jpg" :
-                            index === 3 ? "/product/assessment/Scalability for Institutions.jpg" :
+                            index === 0 ? "/fbwebsite/product/assessment/Wide Range of Assessments.jpg" :
+                            index === 1 ? "/fbwebsite/product/assessment/AI-Powered Accuracy.jpg" :
+                            index === 2 ? "/fbwebsite/product/assessment/Enterprise-Grade Security.jpg" :
+                            index === 3 ? "/fbwebsite/product/assessment/Scalability for Institutions.jpg" :
                             "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                           }
                           alt={`${feature.title} illustration`}
@@ -407,7 +379,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8">
                     <img
-                      src="/product/assessment/mcq.png"
+                      src="/fbwebsite/product/assessment/mcq.png"
                       alt="MCQ Assessment Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -443,7 +415,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8 order-last lg:order-first">
                     <img
-                      src="/product/assessment/subjective.png"
+                      src="/fbwebsite/product/assessment/subjective.png"
                       alt="Subjective Assessment Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -479,7 +451,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8">
                     <img
-                      src="/product/assessment/coding.png"
+                      src="/fbwebsite/product/assessment/coding.png"
                       alt="Coding Challenge Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -508,7 +480,7 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="flex items-center justify-center p-8 order-last lg:order-first">
                     <img
-                      src="/product/assessment/psychometic.png"
+                      src="/fbwebsite/product/assessment/psychometic.png"
                       alt="Psychometric Assessment Interface"
                       className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
                     />
@@ -591,9 +563,9 @@ export const AssessmentToolPage: React.FC = () => {
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={
-                      index === 0 ? "/product/assessment/college.png" :
-                      index === 1 ? "/product/assessment/company.png" :
-                      index === 2 ? "/product/assessment/institute.png" :
+                      index === 0 ? "/fbwebsite/product/assessment/college.png" :
+                      index === 1 ? "/fbwebsite/product/assessment/company.png" :
+                      index === 2 ? "/fbwebsite/product/assessment/institute.png" :
                       "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                     }
                     alt={`${useCase.title} illustration`}
@@ -659,7 +631,7 @@ export const AssessmentToolPage: React.FC = () => {
             <div className="relative order-first lg:order-last">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <img
-                  src="/product/assessment/ready to experience.png"
+                  src="/fbwebsite/product/assessment/ready to experience.png"
                   alt="Ready to Experience Assessment Platform"
                   className="w-full h-full object-cover"
                 />

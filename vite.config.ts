@@ -16,6 +16,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
+  base: '/fbwebsite/', // Ensure this matches your GitHub repository name or subdirectory
   server: {
     port: 5173,
     host: true,

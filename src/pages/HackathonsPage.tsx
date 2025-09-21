@@ -7,41 +7,32 @@ import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Progress } from '@voilajsx/uikit/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
-import { 
-  Zap, 
-  Code, 
-  TrendingUp, 
-  CheckCircle, 
-  Users,
+import {
+  Zap,
+  Code,
+  TrendingUp,
+  CheckCircle,
   Lightbulb,
-  BarChart3,
   Trophy,
   Globe,
   Award,
   Target,
   Sparkles,
   ArrowRight,
-  Phone,
-  PlayCircle,
   UserCheck,
   FileText,
-  Clock,
   Timer,
   ChevronRight,
   Briefcase,
-  GraduationCap,
   Rocket,
   Eye,
   Settings,
   Brain,
-  Wrench,
   DollarSign,
-  Network,
-  PenTool,
-  Search,
-  Group,
   Building2,
-  Star
+  Star,
+  Group,
+  Phone
 } from 'lucide-react';
 import { SEO } from '../components';
 
@@ -393,7 +384,7 @@ export const HackathonsPage: React.FC = () => {
               <CardContent className="p-8">
                 <div className="flex items-center gap-4 justify-center mb-4">
                   <Avatar className="h-16 w-16 border-2 border-secondary/20">
-                    <AvatarImage src="/api/placeholder/64/64" />
+                    <AvatarImage src="api/placeholder/64/64" />
                     <AvatarFallback className="bg-secondary/10 text-secondary font-bold text-lg">IE</AvatarFallback>
                   </Avatar>
                   <div className="text-left">

@@ -7,40 +7,26 @@ import { Separator } from '@voilajsx/uikit/separator';
 import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
 import { Progress } from '@voilajsx/uikit/progress';
 import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
-import { 
-  Users, 
-  Handshake, 
-  TrendingUp, 
-  CheckCircle, 
+import {
+  Users,
+  Handshake,
+  TrendingUp,
+  CheckCircle,
   Building2,
   Lightbulb,
   BarChart3,
   MessageCircle,
-  Globe,
-  Award,
   Target,
   Sparkles,
   ArrowRight,
-  Phone,
-  PlayCircle,
   UserCheck,
   FileText,
-  Clock,
   Zap,
   ChevronRight,
   Trophy,
-  Briefcase,
-  GraduationCap,
   Network,
   Eye,
-  Settings,
-  Brain,
-  Mic,
   Calendar,
-  PenTool,
-  Search,
-  Group,
-  Star,
   BookOpen
 } from 'lucide-react';
 import { SEO } from '../components';
@@ -376,7 +362,7 @@ export const HRCampusConnectPage: React.FC = () => {
             <Card className="bg-muted/30 border-2">
               <CardContent className="p-6 text-center space-y-4">
                 <Avatar className="h-16 w-16 border-2 border-primary/20 mx-auto">
-                  <AvatarImage src="/api/placeholder/64/64" />
+                  <AvatarImage src="api/placeholder/64/64" />
                   <AvatarFallback className="bg-primary/10 text-primary font-bold text-lg">HR</AvatarFallback>
                 </Avatar>
                 <div>
@@ -392,7 +378,7 @@ export const HRCampusConnectPage: React.FC = () => {
             <Card className="bg-muted/30 border-2">
               <CardContent className="p-6 text-center space-y-4">
                 <Avatar className="h-16 w-16 border-2 border-secondary/20 mx-auto">
-                  <AvatarImage src="/api/placeholder/64/64" />
+                  <AvatarImage src="api/placeholder/64/64" />
                   <AvatarFallback className="bg-secondary/10 text-secondary font-bold text-lg">RC</AvatarFallback>
                 </Avatar>
                 <div>
@@ -408,7 +394,7 @@ export const HRCampusConnectPage: React.FC = () => {
             <Card className="bg-muted/30 border-2">
               <CardContent className="p-6 text-center space-y-4">
                 <Avatar className="h-16 w-16 border-2 border-accent/20 mx-auto">
-                  <AvatarImage src="/api/placeholder/64/64" />
+                  <AvatarImage src="api/placeholder/64/64" />
                   <AvatarFallback className="bg-accent/10 text-accent font-bold text-lg">TL</AvatarFallback>
                 </Avatar>
                 <div>
