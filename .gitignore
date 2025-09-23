@@ -43,3 +43,7 @@ ehthumbs.db
 .tmp/
 .cache/
 FETCH_HEAD
+*.mp4
+*.jpg
+*.png
+*.jpeg
