@@ -1,226 +1,187 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@voilajsx/uikit/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voilajsx/uikit/card';
+import { Card, CardContent, CardDescription,CardTitle } from '@voilajsx/uikit/card';
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
-import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
-import { Progress } from '@voilajsx/uikit/progress';
-import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
 import {
   GraduationCap,
-  Calculator,
-  TrendingUp,
-  CheckCircle,
-  Building2,
-  Code,
-  BarChart3,
-  MessageCircle,
-  Award,
-  Target,
-  ArrowRight,
-  PlayCircle,
   Users,
+  Award,
+  CheckCircle,
+  Code,
   Briefcase,
-  Brain,
-  Lightbulb,
-  UserCheck,
   Mic,
-  FileText,
-  Zap,
-  ChevronRight,
+  Target,
+  PlayCircle,
+  ArrowRight,
+  Phone,
+  Lightbulb,
   Trophy,
+  Star,
   BookOpen,
-  PenTool
+  Laptop,
+  ClipboardCheck,
 } from 'lucide-react';
 import { SEO } from '../components';
+import { asset } from '../utils/asset';
 
 export const CRTTrainingPage: React.FC = () => {
   const focusAreas = [
     {
-      icon: Calculator,
-      title: "Aptitude & Reasoning Training",
-      description: "Intensive training in quantitative aptitude, logical reasoning, and data interpretation",
-      color: "primary",
-      items: [
-        { title: "Quantitative Aptitude", description: "Mathematical problem-solving techniques", icon: Calculator },
-        { title: "Logical Reasoning", description: "Step-by-step problem solving strategies", icon: Brain },
-        { title: "Data Interpretation", description: "Real recruitment test simulation", icon: BarChart3 }
-      ]
+      icon: Target,
+      title: 'Aptitude & Reasoning',
+      description:
+        'Quantitative aptitude, logical reasoning, and data interpretation with mock tests and shortcut techniques.',
     },
     {
       icon: Code,
-      title: "Coding & Problem-Solving Skills",
-      description: "Hands-on training in multiple programming languages with competitive programming practice",
-      color: "secondary",
-      items: [
-        { title: "Multi-Language Training", description: "C, C++, Java, Python, C# and more", icon: Code },
-        { title: "Competitive Programming", description: "Real-world coding challenges", icon: Trophy },
-        { title: "Algorithmic Thinking", description: "Problem-solving strategies for coding rounds", icon: Lightbulb }
-      ]
+      title: 'Coding & Problem-Solving',
+      description:
+        'Hands-on programming in C, C++, Java, Python with DS & Algorithms, competitive coding, and coding round prep.',
     },
     {
-      icon: MessageCircle,
-      title: "Communication & Soft Skills",
-      description: "Training in English proficiency, public speaking, and personality development",
-      color: "accent",
-      items: [
-        { title: "English Proficiency", description: "Public speaking and group discussions", icon: Mic },
-        { title: "Personality Development", description: "Confidence and professionalism building", icon: UserCheck },
-        { title: "Workplace Skills", description: "Teamwork, leadership, and etiquette", icon: Users }
-      ]
+      icon: Mic,
+      title: 'Communication & Soft Skills',
+      description:
+        'Public speaking, GD practice, workplace communication, professional etiquette, and confidence building.',
     },
     {
       icon: Briefcase,
-      title: "Interview Preparation",
-      description: "Mock interviews and comprehensive guidance for real hiring scenarios",
-      color: "chart1",
-      items: [
-        { title: "Mock Interviews", description: "HR and technical interview simulation", icon: Briefcase },
-        { title: "Resume Building", description: "Professional resume and presentation guidance", icon: FileText },
-        { title: "Expert Feedback", description: "Continuous improvement from industry experts", icon: TrendingUp }
-      ]
-    }
-  ];
-
-  const trainerQualities = [
-    {
-      title: "5+ Years Experience",
-      description: "Highly qualified trainers with real-world industry experience",
-      icon: Award,
-      color: "primary"
+      title: 'Interview Preparation',
+      description:
+        'Resume workshops, HR & technical mock interviews, answering strategies, and expert feedback.',
     },
-    {
-      title: "Industry Insights",
-      description: "Corporate exposure and practical problem-solving methods",
-      icon: Building2,
-      color: "secondary"
-    },
-    {
-      title: "Placement-Ready Focus",
-      description: "Expertise ensures students are confident and job-ready",
-      icon: Target,
-      color: "accent"
-    }
-  ];
-
-  const benefits = [
-    "5+ years experienced trainers guiding every step",
-    "End-to-end placement preparation — from aptitude to final interview",
-    "Covers technical + non-technical skills",
-    "Industry-oriented training methodology",
-    "Proven track record of helping students succeed in top companies",
-    "Builds confidence, skills, and employability"
   ];
 
   const outcomes = [
-    {
-      title: "Enhanced Problem-Solving",
-      description: "Improved coding abilities and analytical thinking",
-      icon: Brain,
-      progress: 90
-    },
-    {
-      title: "Communication Skills",
-      description: "Better presentation and interpersonal abilities",
-      icon: MessageCircle,
-      progress: 85
-    },
-    {
-      title: "Higher Placement Success",
-      description: "Increased success rates across top recruiters",
-      icon: TrendingUp,
-      progress: 92
-    },
-    {
-      title: "Industry Readiness",
-      description: "Competitive edge with practical skills",
-      icon: Trophy,
-      progress: 88
-    }
+    { label: 'Problem-Solving Ability', value: '92%', icon: Lightbulb },
+    { label: 'Communication Skills', value: '88%', icon: Mic },
+    { label: 'Placement Success Rate', value: '85%', icon: Trophy },
+    { label: 'Industry Readiness', value: '90%', icon: Star },
   ];
 
-  const trainingProcess = [
-    { 
-      number: "1", 
-      title: "Skill Assessment", 
-      desc: "Evaluate current abilities and identify improvement areas",
-      icon: BarChart3,
-      color: "primary"
-    },
-    { 
-      number: "2", 
-      title: "Structured Training", 
-      desc: "Comprehensive modules covering all placement areas",
+  const benefits = [
+    'End-to-end preparation — from aptitude to final interviews',
+    'Mock drives & placement simulations',
+    '5+ years experienced trainers with industry insights',
+    'Blend of technical and non-technical training',
+    'Proven track record with top recruiters',
+    'Personalized feedback and mentoring',
+  ];
+
+  const methodology = [
+    {
       icon: BookOpen,
-      color: "secondary"
+      title: 'Structured Curriculum',
+      description:
+        'Step-by-step modules designed to strengthen core skills before advancing to complex problem-solving and interview scenarios.',
     },
-    { 
-      number: "3", 
-      title: "Practice & Mock Tests", 
-      desc: "Real-time practice with simulated environments",
-      icon: PenTool,
-      color: "accent"
+    {
+      icon: Laptop,
+      title: 'Blended Learning',
+      description:
+        'Interactive classroom training combined with online assessments, video lessons, and coding platforms for self-practice.',
     },
-    { 
-      number: "4", 
-      title: "Final Preparation", 
-      desc: "Interview coaching and placement readiness",
-      icon: UserCheck,
-      color: "chart1"
-    }
+    {
+      icon: ClipboardCheck,
+      title: 'Continuous Assessment',
+      description:
+        'Regular quizzes, mock interviews, and performance reports ensure steady improvement and measurable outcomes.',
+    },
   ];
 
   return (
     <>
       <SEO
-        title="Campus Recruitment Training (CRT) - Preparing Students for Competitive Hiring"
-        description="Comprehensive campus placement preparation program covering aptitude, coding, communication, and interview skills with experienced trainers."
+        title="Campus Recruitment Training (CRT) - Fresherbot"
+        description="Fresherbot CRT program prepares students for competitive hiring with aptitude, coding, communication, and interview skills."
       />
-      <div className="space-y-16">
+      <div className="space-y-20">
         {/* Hero Section */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative text-center py-16 px-8">
-            <div className="space-y-8 max-w-5xl mx-auto">
-              <div className="space-y-2">
-                <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                  <GraduationCap className="w-4 h-4 mr-2" />
-                  Campus Recruitment Training (CRT)
-                </Badge>
-              </div>
-              
-              <div className="space-y-4">
-                <h1 className="voila-heading text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Preparing Students for Competitive Hiring
-                </h1>
+        <section className="relative overflow-hidden md:py-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-background to-secondary/3" />
+
+          <div className="relative container mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left Content */}
+              <div className="space-y-10">
+                <div className="space-y-6">
+                  <Badge
+                    variant="secondary"
+                    className="bg-muted text-foreground inline-flex items-center gap-2 px-4 py-2"
+                  >
+                    <GraduationCap className="w-4 h-4" />
+                    Campus Recruitment Training
+                  </Badge>
+
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-primary via-accent to-orange-500 bg-clip-text text-transparent">
+                      Preparing Students
+                    </span>
+                    <br />
+                    for Competitive Hiring
+                  </h1>
+
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
+                    Campus placements are a crucial milestone. Fresherbot’s CRT equips students
+                    with skills, confidence, and strategies to excel at every stage.
+                  </p>
+                </div>
+
+                <div className="grid sm:grid-cols-3 gap-6 py-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Target className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Aptitude & Coding</div>
+                      <div className="text-xs text-muted-foreground">Strong foundations</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Mic className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Soft Skills</div>
+                      <div className="text-xs text-muted-foreground">Confidence & GDs</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Briefcase className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Interview Ready</div>
+                      <div className="text-xs text-muted-foreground">Mock prep & feedback</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className=" text-lg px-8 py-6 shadow-lg" asChild>
+                    <Link to="/contact">
+                      <PlayCircle className="mr-2 h-5 w-5" />
+                      Request Training Program
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                    <Link to="/demo">
+                      Get Demo Session
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                Campus placements are a crucial milestone in every student's journey. At{' '}
-                <strong className="text-primary">Fresherbot</strong>, our{' '}
-                <Badge variant="outline" className="mx-1">Campus Recruitment Training (CRT) Program</Badge>{' '}
-                equips students with the{' '}
-                <Badge variant="outline" className="mx-1">skills</Badge>,{' '}
-                <Badge variant="outline" className="mx-1">confidence</Badge>, and{' '}
-                <Badge variant="outline" className="mx-1">strategies</Badge>{' '}
-                needed to excel in today's highly competitive hiring environment.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Button size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/request-training">
-                    <GraduationCap className="mr-2 h-5 w-5" />
-                    Request a Training Program
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/demo-session">
-                    <PlayCircle className="mr-2 h-5 w-5" />
-                    Get a Demo Session
-                  </Link>
-                </Button>
+              {/* Right Illustration */}
+              <div className="relative">
+                <img
+                  src={asset('product/crt/hero.jpg')}
+                  alt="CRT Training Illustration"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                />
               </div>
             </div>
           </div>
@@ -228,136 +189,99 @@ export const CRTTrainingPage: React.FC = () => {
 
         <Separator className="my-12" />
 
-        {/* Key Focus Areas */}
+        {/* Focus Areas */}
         <section className="space-y-10">
           <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Training Focus</Badge>
-            <h2 className="text-4xl font-bold">Key Focus Areas</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive skill development covering all aspects of campus recruitment
-            </p>
-          </div>
-          
-          <div className="space-y-12">
-            {focusAreas.map((area, index) => (
-              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${area.color}/20 to-${area.color}/10 rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                    <area.icon className={`h-10 w-10 text-${area.color}`} />
-                  </div>
-                  <CardTitle className="text-2xl">{index + 1}. {area.title}</CardTitle>
-                  <CardDescription className="text-lg">{area.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {area.items.map((item, itemIndex) => (
-                      <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors">
-                        <CardContent className="p-6 space-y-3">
-                          <div className={`w-12 h-12 bg-gradient-to-br from-${area.color}/20 to-${area.color}/10 rounded-lg flex items-center justify-center`}>
-                            <item.icon className={`h-6 w-6 text-${area.color}`} />
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-semibold">{item.title}</h4>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Training Process */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Training Process</Badge>
-            <h2 className="text-4xl font-bold">How Our CRT Program Works</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Structured approach to comprehensive placement preparation
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {trainingProcess.map((step, index) => (
-              <div key={index} className="relative">
-                <Card className={`text-center border-2 hover:border-${step.color}/50 transition-all duration-300 hover:shadow-xl group`}>
-                  <CardHeader className="space-y-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br from-${step.color}/20 to-${step.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                      <span className={`text-3xl font-bold text-${step.color}`}>{step.number}</span>
-                    </div>
-                    <div className="space-y-3">
-                      <CardTitle className="text-lg">{step.title}</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">{step.desc}</CardDescription>
-                    </div>
-                  </CardHeader>
-                </Card>
-                {index < 3 && (
-                  <ChevronRight className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-muted-foreground h-8 w-8" />
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Expert Trainers */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Our Team</Badge>
-            <h2 className="text-4xl font-bold">Expert Trainers</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Highly qualified professionals with real-world industry experience
+            <Badge variant="secondary" className="px-4 py-2">
+              Focus Areas
+            </Badge>
+            <h2 className="text-4xl font-bold">Core Focus Areas</h2>
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              A structured CRT curriculum covering every skill needed to succeed in competitive
+              placements.
             </p>
           </div>
 
-          <Alert className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5 max-w-4xl mx-auto">
-            <Award className="h-5 w-5" />
-            <AlertDescription className="text-lg">
-              All our sessions are conducted by <strong>highly qualified trainers with 5+ years of real-world experience</strong>. 
-              Trainers bring <strong>industry insights, corporate exposure, and practical problem-solving methods</strong> into the classroom.
-            </AlertDescription>
-          </Alert>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {trainerQualities.map((quality, index) => (
-              <Card key={index} className={`border-2 hover:border-${quality.color}/50 transition-all duration-300 hover:shadow-xl group text-center`}>
-                <CardHeader className="space-y-6">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${quality.color}/20 to-${quality.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                    <quality.icon className={`h-10 w-10 text-${quality.color}`} />
-                  </div>
-                  <div className="space-y-3">
-                    <CardTitle className="text-xl">{quality.title}</CardTitle>
-                    <CardDescription className="text-base leading-relaxed">{quality.description}</CardDescription>
-                  </div>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Card className="bg-muted/30 border-2 max-w-2xl mx-auto">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 justify-center mb-4">
-                  <Avatar className="h-16 w-16 border-2 border-primary/20">
-                    <AvatarImage src="api/placeholder/64/64" />
-                    <AvatarFallback className="bg-primary/10 text-primary font-bold text-lg">ET</AvatarFallback>
-                  </Avatar>
-                  <div className="text-left">
-                    <div className="font-semibold text-lg">Expert Trainers</div>
-                    <div className="text-sm text-muted-foreground">5+ Years Industry Experience</div>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {focusAreas.map((fa, index) => (
+              <Card
+                key={index}
+                className="border-2 hover:shadow-xl transition-all duration-300 p-8 space-y-6 text-center"
+              >
+                <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center">
+                  <fa.icon className="h-8 w-8 text-primary" />
                 </div>
-                <p className="text-base text-muted-foreground italic">
-                  "Their expertise ensures students are <strong className="text-primary">placement-ready and confident</strong> for any recruitment challenge."
-                </p>
-              </CardContent>
-            </Card>
+                <CardTitle className="text-2xl font-bold">{fa.title}</CardTitle>
+                <CardDescription className="text-lg leading-relaxed">
+                  {fa.description}
+                </CardDescription>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <Separator className="my-12" />
+
+        {/* Methodology */}
+        <section className="space-y-10">
+          <div className="text-center space-y-4">
+            <Badge variant="secondary" className="px-4 py-2">
+              Training Approach
+            </Badge>
+            <h2 className="text-4xl font-bold">Our Methodology</h2>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              We follow a proven model that balances theory with practice, ensuring students not only
+              learn but also apply their knowledge effectively.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {methodology.map((m, index) => (
+              <Card
+                key={index}
+                className="border-2 hover:shadow-xl transition-all duration-300 p-6 text-center space-y-4"
+              >
+                <div className="w-14 h-14 mx-auto bg-primary/10 rounded-xl flex items-center justify-center">
+                  <m.icon className="h-7 w-7 text-primary" />
+                </div>
+                <CardTitle className="text-xl font-semibold">{m.title}</CardTitle>
+                <CardDescription className="text-base leading-relaxed">
+                  {m.description}
+                </CardDescription>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <Separator className="my-12" />
+
+        {/* Outcomes */}
+        <section className="relative space-y-12">
+          <div className="text-center space-y-4">
+            <Badge variant="secondary" className="px-4 py-2">
+              Outcomes
+            </Badge>
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-primary via-accent to-orange-500 bg-clip-text text-transparent">
+              Program Outcomes
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Tangible skills and measurable growth achieved through our CRT program.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            {outcomes.map((o, i) => (
+              <Card
+                key={i}
+                className="border-2 p-6 text-center space-y-4 hover:shadow-xl transition-all duration-300 rounded-2xl"
+              >
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                  <o.icon className="h-8 w-8 text-primary" />
+                </div>
+                <div className="text-3xl font-bold">{o.value}</div>
+                <div className="text-base text-muted-foreground">{o.label}</div>
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -366,132 +290,89 @@ export const CRTTrainingPage: React.FC = () => {
         {/* Why Choose */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative p-10 space-y-8">
-            <div className="text-center space-y-4">
-              <Badge variant="secondary" className="px-4 py-2">
-                <Trophy className="w-4 h-4 mr-2" />
-                Why Choose Us
-              </Badge>
-              <h2 className="text-4xl font-bold">Why Choose Fresherbot CRT?</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Comprehensive benefits that ensure student success in competitive placements
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {benefits.map((benefit, index) => (
-                <Card key={index} className="border-2 bg-background/90 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
-                  <CardContent className="p-6 flex items-start gap-4">
-                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                      <CheckCircle className="h-5 w-5 text-primary" />
-                    </div>
-                    <p className="text-base font-medium leading-relaxed">{benefit}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+          <div className="relative grid lg:grid-cols-2 gap-10 items-center p-4 md:p-10">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <Badge variant="secondary" className="px-4 py-2">
+                  <Award className="w-4 h-4 mr-2" />
+                  Why Choose Us
+                </Badge>
+                <h2 className="text-4xl font-bold">Why Choose Fresherbot CRT?</h2>
+                <p className="text-xl text-muted-foreground max-w-3xl">
+                  Comprehensive benefits that set our CRT apart from traditional training programs.
+                </p>
+              </div>
 
-        <Separator className="my-12" />
-
-        {/* Outcomes */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Program Results</Badge>
-            <h2 className="text-4xl font-bold">Outcomes of CRT Program</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Measurable improvements in student capabilities and placement success
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {outcomes.map((outcome, index) => (
-              <Card key={index} className="border-2 text-center hover:shadow-xl transition-all duration-300">
-                <CardHeader className="space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto">
-                    <outcome.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <div className="space-y-3">
-                    <CardTitle className="text-lg">{outcome.title}</CardTitle>
-                    <CardDescription className="text-sm">{outcome.description}</CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="pb-6">
-                  <div className="space-y-3">
-                    <div className="text-2xl font-bold text-primary">{outcome.progress}%</div>
-                    <Progress value={outcome.progress} className="h-3" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* Success Metrics */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-10">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">CRT Program Impact</h3>
-              <p className="text-muted-foreground">Student success metrics from our training programs</p>
+              <div className="grid grid-cols-1 gap-6">
+                {benefits.map((benefit, index) => (
+                  <Card
+                    key={index}
+                    className="border-2 bg-background/90 backdrop-blur-sm hover:shadow-xl transition-all duration-300"
+                  >
+                    <CardContent className="p-6 flex items-start gap-4">
+                      <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                        <CheckCircle className="h-5 w-5 text-primary" />
+                      </div>
+                      <p className="text-base font-medium leading-relaxed">{benefit}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { label: "Students Trained", value: "10,000+", progress: 95 },
-                { label: "Placement Success Rate", value: "87%", progress: 87 },
-                { label: "Top Company Placements", value: "75%", progress: 75 },
-                { label: "Skill Improvement", value: "92%", progress: 92 }
-              ].map((stat, index) => (
-                <Card key={index} className="text-center border-2 bg-background/90 backdrop-blur-sm">
-                  <CardContent className="pt-6 space-y-3">
-                    <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-                    <Progress value={stat.progress} className="h-2" />
-                  </CardContent>
-                </Card>
-              ))}
+
+            <div className="relative">
+              <img
+                src={asset('product/crt/why_choose.png')}
+                alt="Why Choose Illustration"
+                className="w-full h-auto rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </section>
 
         {/* Final CTA */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-12 text-center space-y-8">
-            <div className="space-y-4">
-              <Badge variant="secondary" className="px-4 py-2 text-base">
-                <Zap className="w-4 h-4 mr-2" />
-                Start Training Today
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold">Give Your Students the Competitive Edge They Need</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Join hundreds of institutions who trust Fresherbot CRT for comprehensive placement preparation. 
-                Transform your students into industry-ready professionals with our proven training methodology.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-              <Button size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/request-training">
-                  <GraduationCap className="mr-2 h-5 w-5" />
-                  Request a Training Program
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/demo-session">
-                  <PlayCircle className="mr-2 h-5 w-5" />
-                  Get a Demo Session
-                </Link>
-              </Button>
-            </div>
-            
-            <div className="pt-6">
-              <div className="text-sm text-muted-foreground">
-                <Trophy className="inline h-4 w-4 mr-1" />
-                <strong>Expert Trainers</strong> • <strong>Proven Results</strong> • <strong>Industry-Ready Skills</strong>
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl -z-10" />
+
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-4 md:p-12">
+            <div className="space-y-8 text-center lg:text-left relative z-20">
+              <div className="space-y-4">
+                <Badge variant="secondary" className="px-4 py-2 text-base">
+                  <Users className="w-4 h-4 mr-2" />
+                  Get Started Today
+                </Badge>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                  Give Your Students the Competitive Edge They Need
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Partner with Fresherbot and transform your students into confident, placement-ready
+                  professionals.
+                </p>
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 relative z-30">
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/contact">
+                    <PlayCircle className="mr-2 h-5 w-5" />
+                    Request Training Program
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/demo">
+                    <Phone className="mr-2 h-5 w-5" />
+                    Get Demo Session
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative order-first lg:order-last">
+              <img
+                src={asset('product/crt/final_cta.png')}
+                alt="Final CTA Illustration"
+                className="w-full h-auto rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </section>
