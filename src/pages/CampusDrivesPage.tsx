@@ -207,6 +207,18 @@ export const CampusDrivesPage: React.FC = () => {
     { question: "How do students benefit from HRCC sessions?", answer: "Students interact directly with HRs, improving confidence, communication, and interview readiness." },
   ];
 
+  // Recruiters Showcase
+  const recruiters = [
+    { name: "Infosys", logo: asset('product/campus/infosys.png') },
+    { name: "Wipro", logo: asset('product/campus/wipro.png') },
+    { name: "TCS", logo: asset('product/campus/tcs2.png') },
+    { name: "Accenture", logo: asset('product/campus/accenture.png') },
+    { name: "HCL", logo: asset('product/campus/hcl2.png') },
+    { name: "Capgemini", logo: asset('product/campus/capgemini.png') },
+    { name: "Tech Mahindra", logo: asset('product/campus/techmahindra.png') },
+    { name: "Cognizant", logo: asset('product/campus/cognizant.png') },
+  ];
+
   return (
     <>
       <SEO
@@ -433,12 +445,13 @@ export const CampusDrivesPage: React.FC = () => {
           <Badge variant="secondary">Trusted by Recruiters</Badge>
           <h2 className="text-4xl font-bold">Our Hiring Partners</h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center">
-          {/* Replace placeholders with actual recruiter logos */}
-          <img src={asset('product/recruiters/logo1.png')} alt="Logo 1" className="h-12 object-contain" />
-          <img src={asset('product/recruiters/logo2.png')} alt="Logo 2" className="h-12 object-contain" />
-          <img src={asset('product/recruiters/logo3.png')} alt="Logo 3" className="h-12 object-contain" />
-          <img src={asset('product/recruiters/logo4.png')} alt="Logo 4" className="h-12 object-contain" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-start justify-items-center max-w-5xl mx-auto">
+          {recruiters.map((partner, idx) => (
+            <div key={idx} className="text-center">
+              <img src={partner.logo} alt={partner.name} className="h-12 object-contain mx-auto" />
+              <p className="mt-2 text-sm font-medium">{partner.name}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -465,9 +478,9 @@ export const CampusDrivesPage: React.FC = () => {
       <Separator className="my-16" />
 
       {/* Final CTA */}
-      <section className="text-center py-20 bg-gradient-to-r from-primary/90 via-accent/90 to-orange-500/90 text-white rounded-2xl max-w-6xl mx-auto px-6">
+      <section className="text-center py-20 bg-background border rounded-2xl max-w-6xl mx-auto px-6 shadow-md">
         <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Campus Drives?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
+        <p className="text-lg mb-8 max-w-2xl mx-auto text-muted-foreground">
           Join Fresherbot and streamline your recruitment drives with AI-driven assessments, HR support, and seamless coordination.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
