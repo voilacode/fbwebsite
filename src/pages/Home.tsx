@@ -816,7 +816,7 @@ export const HomePage: React.FC = () => {
                   playsInline
                  
                 >
-                  Video not supported
+                  Video not supporting
                 </video>
               </div>
 

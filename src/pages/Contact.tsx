@@ -438,6 +438,8 @@ export const ContactPage: React.FC = () => {
                       </div>
 
                       <div className="grid grid-cols-2 gap-3">
+
+                        
                         {category.services.map((service, serviceIndex) => (
                           <Card key={serviceIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors py-2 px-1">
                             <CardContent className="px-3 py-2 flex items-center gap-3">

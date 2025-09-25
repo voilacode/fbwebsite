@@ -745,7 +745,7 @@ export const FounderTalksPage: React.FC = () => {
                   playsInline
                  
                 >
-                  Video not supported
+                  Video not supporting
                 </video>
               </div>
 

@@ -830,7 +830,7 @@ export const TMSPlatformPage: React.FC = () => {
                   playsInline
                  
                 >
-                  Video not supported
+                  Video not supporting
                 </video>
               </div>
 
