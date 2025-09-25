@@ -4,9 +4,7 @@ import { Button } from '@voilajsx/uikit/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voilajsx/uikit/card';
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
-import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
-import { Progress } from '@voilajsx/uikit/progress';
-import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@voilajsx/uikit/tabs';
 import {
   Users,
   Handshake,
@@ -27,195 +25,286 @@ import {
   Network,
   Eye,
   Calendar,
-  BookOpen
+  BookOpen,
+  PlayCircle,
+  Clock,
+  Award,
+  Brain,
+  Settings,
+  Phone,
+  Shield,
+  Star,
+  Briefcase
 } from 'lucide-react';
 import { SEO } from '../components';
+import { asset } from '../utils/asset';
 
 export const HRCampusConnectPage: React.FC = () => {
   const keyFeatures = [
     {
       icon: Handshake,
-      title: "Direct HR Interaction",
-      description: "Students and faculty connect with experienced HR professionals for real-world insights",
+      title: "Direct HR Professional Interaction",
+      description: "Connect students and faculty with experienced HR professionals for real-world insights, corporate culture understanding, and practical career guidance through structured networking sessions",
       color: "primary",
       items: [
-        { title: "Experienced Professionals", description: "Connect with seasoned HR leaders and recruiters", icon: UserCheck },
-        { title: "Corporate Culture Insights", description: "Real discussions on hiring strategies and expectations", icon: Building2 },
-        { title: "Placement Preparation", description: "Clarify doubts and prepare better for placements", icon: Target }
+        {
+          title: "Experienced HR Leaders",
+          description: "Connect with seasoned professionals from Fortune 500 companies and leading MNCs across various industries",
+          icon: UserCheck
+        },
+        {
+          title: "Corporate Culture Insights",
+          description: "Real discussions on workplace dynamics, hiring strategies, company expectations, and industry standards",
+          icon: Building2
+        },
+        {
+          title: "Placement Preparation Guidance",
+          description: "Direct guidance on interview preparation, resume building, and workplace readiness from hiring experts",
+          icon: Target
+        }
       ]
     },
     {
       icon: TrendingUp,
-      title: "Industry Insights & Trends",
-      description: "HR leaders share latest recruitment practices and emerging career opportunities",
+      title: "Industry Insights & Market Trends",
+      description: "HR leaders share latest recruitment practices, emerging career opportunities, skill demands, and market evolution insights to keep students ahead of industry changes",
       color: "secondary",
       items: [
-        { title: "Latest Practices", description: "Current recruitment methods and industry shifts", icon: TrendingUp },
-        { title: "Career Opportunities", description: "Emerging roles and workplace dynamics", icon: Lightbulb },
-        { title: "Market Awareness", description: "Stay ahead in evolving job market", icon: BarChart3 }
+        {
+          title: "Latest Recruitment Practices",
+          description: "Current hiring methodologies, assessment techniques, and emerging recruitment technologies in the industry",
+          icon: TrendingUp
+        },
+        {
+          title: "Emerging Career Opportunities",
+          description: "New roles, future job markets, industry shifts, and skill evolution requirements across sectors",
+          icon: Lightbulb
+        },
+        {
+          title: "Market Intelligence",
+          description: "Real-time job market analysis, salary trends, and competitive positioning strategies for career growth",
+          icon: BarChart3
+        }
       ]
     },
     {
       icon: BookOpen,
-      title: "Career Guidance & Best Practices",
-      description: "Practical advice on professional development and workplace readiness",
+      title: "Career Guidance & Skill Development",
+      description: "Practical advice on professional development, workplace readiness, and comprehensive skill building through interactive workshops and mentorship sessions",
       color: "accent",
       items: [
-        { title: "Professional Skills", description: "Resume building and interview preparation guidance", icon: FileText },
-        { title: "Interactive Sessions", description: "Mock HR sessions and Q&A rounds", icon: MessageCircle },
-        { title: "Employability Focus", description: "Tailored guidance to improve job readiness", icon: Trophy }
+        {
+          title: "Professional Skills Enhancement",
+          description: "Resume optimization, interview techniques, communication skills, and professional presentation development",
+          icon: FileText
+        },
+        {
+          title: "Interactive Learning Sessions",
+          description: "Mock HR interviews, Q&A rounds, case study discussions, and real-world scenario simulations",
+          icon: MessageCircle
+        },
+        {
+          title: "Employability Advancement",
+          description: "Tailored guidance to improve job readiness, soft skills development, and career trajectory planning",
+          icon: Trophy
+        }
       ]
-    }
-  ];
-
-  const sessionTypes = [
-    {
-      title: "Industry Trends Sessions",
-      description: "Latest hiring practices and market insights",
-      features: ["Current Market Trends", "Skill Demand Analysis", "Future Opportunities", "Industry Shifts"],
-      icon: TrendingUp,
-      color: "primary"
     },
     {
-      title: "Interactive Networking",
-      description: "Direct connect between students and HR leaders",
-      features: ["One-on-One Interactions", "Group Discussions", "Experience Sharing", "Doubt Resolution"],
       icon: Network,
-      color: "secondary"
-    },
-    {
-      title: "Career Guidance Workshops",
-      description: "Practical skills and professional development",
-      features: ["Resume Reviews", "Interview Preparation", "Workplace Etiquette", "Communication Skills"],
-      icon: BookOpen,
-      color: "accent"
+      title: "Industry-Academia Bridge Building",
+      description: "Strengthen relationships between educational institutions and corporate world through sustained partnerships, collaborative programs, and long-term engagement initiatives",
+      color: "chart1",
+      items: [
+        {
+          title: "Professional Networking",
+          description: "Build lasting connections between students, faculty, and industry professionals for continuous engagement",
+          icon: Network
+        },
+        {
+          title: "Institution Partnerships",
+          description: "Develop strategic alliances between colleges and companies for placement programs and internships",
+          icon: Handshake
+        },
+        {
+          title: "Continuous Engagement",
+          description: "Regular follow-ups, progress tracking, and sustained relationships for ongoing career support",
+          icon: Calendar
+        }
+      ]
     }
   ];
 
   const benefits = [
-    "Live interaction with industry HR leaders",
-    "Access to real-time hiring trends and practices",
-    "Builds confidence and readiness for campus placements",
-    "Strengthens the institution–industry relationship",
-    "Helps students transition smoothly from campus to corporate"
+    "Live interaction with industry HR leaders and recruitment experts",
+    "Access to real-time hiring trends and evolving market practices",
+    "Builds confidence and readiness for successful campus placements",
+    "Strengthens the institution-industry relationship and partnerships",
+    "Helps students transition smoothly from campus to corporate environment",
+    "Direct exposure to workplace expectations and professional standards"
   ];
 
-  const outcomes = [
+  const sessionFormats = [
     {
-      title: "Recruiter Clarity",
-      description: "Students gain clear understanding of expectations",
-      icon: Eye,
-      progress: 94
-    },
-    {
-      title: "Professional Skills",
-      description: "Improved communication and workplace readiness",
-      icon: MessageCircle,
-      progress: 90
-    },
-    {
-      title: "Placement Success",
-      description: "Enhanced success rates through HR exposure",
+      title: "Industry Trends & Insights Sessions",
+      description: "Latest hiring practices, market analysis, and future opportunities discussion",
+      technologies: ["Market Analysis", "Hiring Trends", "Skill Demands", "Career Mapping"],
       icon: TrendingUp,
-      progress: 88
+      color: "primary",
+      duration: "90 minutes",
+      format: "Interactive Panel"
     },
     {
-      title: "Industry Partnerships",
-      description: "Stronger institution-industry relationships",
-      icon: Handshake,
-      progress: 92
+      title: "Interactive Networking Workshops",
+      description: "Direct student-HR professional interactions and networking opportunities",
+      technologies: ["One-on-One Sessions", "Group Discussions", "Experience Sharing", "Q&A Rounds"],
+      icon: Network,
+      color: "secondary",
+      duration: "120 minutes",
+      format: "Workshop Style"
+    },
+    {
+      title: "Career Guidance & Mentorship",
+      description: "Professional development workshops and personalized career guidance",
+      technologies: ["Resume Reviews", "Mock Interviews", "Soft Skills", "Career Planning"],
+      icon: BookOpen,
+      color: "accent",
+      duration: "150 minutes",
+      format: "Mentorship Program"
+    },
+    {
+      title: "Corporate Culture Immersion",
+      description: "Workplace readiness and corporate environment understanding sessions",
+      technologies: ["Workplace Ethics", "Communication", "Team Dynamics", "Professional Conduct"],
+      icon: Building2,
+      color: "chart1",
+      duration: "180 minutes",
+      format: "Immersive Experience"
     }
   ];
 
-  const connectProcess = [
-    { 
-      number: "1", 
-      title: "Session Planning", 
-      desc: "Coordinate with institutions and HR professionals",
-      icon: Calendar,
-      color: "primary"
-    },
-    { 
-      number: "2", 
-      title: "HR Professional Setup", 
-      desc: "Bring experienced industry leaders to campus",
-      icon: UserCheck,
-      color: "secondary"
-    },
-    { 
-      number: "3", 
-      title: "Interactive Sessions", 
-      desc: "Facilitate networking and knowledge sharing",
-      icon: MessageCircle,
-      color: "accent"
-    },
-    { 
-      number: "4", 
-      title: "Follow-up & Impact", 
-      desc: "Track outcomes and build lasting connections",
-      icon: TrendingUp,
-      color: "chart1"
-    }
+  const successMetrics = [
+    { label: "HRCC Sessions Hosted", value: "400+", description: "Multi-format programs", progress: 95 },
+    { label: "Students Benefited", value: "25,000+", description: "Direct HR interaction", progress: 92 },
+    { label: "HR Professionals", value: "800+", description: "Industry experts", progress: 88 },
+    { label: "Placement Success Rate", value: "89%", description: "Improved outcomes", progress: 89 }
   ];
 
   return (
     <>
       <SEO
-        title="HR Campus Connect - Bridging the Gap Between Industry & Academia"
-        description="Connect students with HR leaders through interactive sessions, industry insights, career guidance, and direct professional networking opportunities."
+        title="HR Campus Connect - Bridging Industry-Academia Gap Through Direct Professional Interaction"
+        description="Connect students with HR leaders through interactive sessions, industry insights, career guidance, and professional networking for enhanced placement success and career readiness."
       />
-      <div className="space-y-16">
+      <div className="space-y-20">
         {/* Hero Section */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative text-center py-16 px-8">
-            <div className="space-y-8 max-w-5xl mx-auto">
-              <div className="space-y-2">
-                <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                  <Users className="w-4 h-4 mr-2" />
-                  HR Campus Connect
-                </Badge>
+        <section className="relative overflow-hidden md:py-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
+
+          <div className="relative container mx-auto">
+            <div className="grid lg:grid-cols-5 gap-16 items-center">
+              {/* Left Content */}
+              <div className="lg:col-span-3 space-y-10">
+                <div className="space-y-6">
+                  <Badge variant="secondary" className="bg-muted text-foreground inline-flex items-center gap-2 px-4 py-2">
+                    <Users className="w-4 h-4" />
+                    Professional Networking Platform
+                  </Badge>
+
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-primary via-accent to-orange-500 bg-clip-text text-transparent">
+                      Bridging Industry
+                    </span>
+                    <br />
+                    & Academia Gap
+                  </h1>
+
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
+                    Connect students with <strong className="text-foreground">HR leaders</strong>, gain <strong className="text-foreground">industry insights</strong>, and build <strong className="text-foreground">professional networks</strong> for career success.
+                  </p>
+                </div>
+
+                <div className="grid sm:grid-cols-3 gap-6 py-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Handshake className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Direct HR Connect</div>
+                      <div className="text-xs text-muted-foreground">Industry professionals</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Market Insights</div>
+                      <div className="text-xs text-muted-foreground">Latest trends</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Target className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Career Guidance</div>
+                      <div className="text-xs text-muted-foreground">Professional development</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className="text-lg px-8 py-6 shadow-lg" asChild>
+                    <Link to="/request-session">
+                      <PlayCircle className="mr-2 h-5 w-5" />
+                      Request Session
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                    <Link to="/partner-with-us">
+                      Partner With Us
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="flex items-center gap-6 text-sm text-muted-foreground pt-4">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    No cost sessions
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Expert HR professionals
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Industry certificates
+                  </div>
+                </div>
               </div>
-              
-              <div className="space-y-4">
-                <h1 className="voila-heading text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Bridging the Gap Between Industry & Academia
-                </h1>
-              </div>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                The <strong className="text-primary">HR Campus Connect (HRCC)</strong> program by{' '}
-                <Badge variant="outline" className="mx-1">Fresherbot</Badge>{' '}
-                is designed to bring{' '}
-                <Badge variant="outline" className="mx-1">HR leaders</Badge>,{' '}
-                <Badge variant="outline" className="mx-1">recruiters</Badge>,{' '}
-                <Badge variant="outline" className="mx-1">students</Badge>, and{' '}
-                <Badge variant="outline" className="mx-1">faculty</Badge>{' '}
-                together on one platform.
-              </p>
+              {/* Right Image */}
+              <div className="lg:col-span-2 relative md:pr-10">
+                <div className="relative">
+                  <img
+                    src={asset('events/hr-campus-connect/hrcampus-heroicon.jpg')}
+                    alt="HR Campus Connect Professional Networking"
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                  />
 
-              <Alert className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5 max-w-4xl mx-auto">
-                <Sparkles className="h-5 w-5" />
-                <AlertDescription className="text-lg">
-                  Through interactive networking sessions, students gain <strong>first-hand exposure to industry expectations, 
-                  hiring trends, and career guidance</strong> directly from corporate leaders.
-                </AlertDescription>
-              </Alert>
+                  {/* Floating Stats Cards */}
+                  <div className="absolute -top-4 -left-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">800+</div>
+                    <div className="text-sm text-muted-foreground">HR Experts</div>
+                  </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Button size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/request-session">
-                    <Calendar className="mr-2 h-5 w-5" />
-                    Request a Session
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/partner-with-us">
-                    <Handshake className="mr-2 h-5 w-5" />
-                    Partner With Us
-                  </Link>
-                </Button>
+                  <div className="absolute -bottom-4 -right-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">89%</div>
+                    <div className="text-sm text-muted-foreground">Success Rate</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -223,40 +312,184 @@ export const HRCampusConnectPage: React.FC = () => {
 
         <Separator className="my-12" />
 
-        {/* Session Types */}
+        {/* Session Formats Showcase */}
         <section className="space-y-8">
           <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Session Types</Badge>
-            <h2 className="text-4xl font-bold">HRCC Session Categories</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive networking and guidance sessions tailored for different learning objectives
+            <Badge variant="secondary" className="px-4 py-2">Session Formats</Badge>
+            <h2 className="text-4xl font-bold">Choose Your Interaction Format</h2>
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              Multiple session formats designed for different learning objectives and professional development needs. Each format offers unique opportunities for student-HR professional interaction and comprehensive career guidance.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {sessionTypes.map((session, index) => (
-              <Card key={index} className={`border-2 hover:border-${session.color}/50 transition-all duration-300 hover:shadow-xl group`}>
-                <CardHeader className="text-center space-y-4">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${session.color}/20 to-${session.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                    <session.icon className={`h-10 w-10 text-${session.color}`} />
+          <Tabs defaultValue="trends" className="w-full">
+            <TabsList className="grid w-full grid-cols-4 max-w-3xl mx-auto">
+              <TabsTrigger value="trends">Trends</TabsTrigger>
+              <TabsTrigger value="networking">Networking</TabsTrigger>
+              <TabsTrigger value="guidance">Guidance</TabsTrigger>
+              <TabsTrigger value="culture">Culture</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="trends" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                      src={asset('events/hr-campus-connect/market-analysis.jpg')}
+                      alt="Industry Trends Session"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
                   </div>
-                  <div className="space-y-2">
-                    <CardTitle className="text-xl">{session.title}</CardTitle>
-                    <CardDescription className="text-base">{session.description}</CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 gap-2">
-                    {session.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="bg-muted/50 border rounded-lg p-3 text-sm text-center hover:bg-muted/80 transition-colors">
-                        {feature}
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <TrendingUp className="h-6 w-6 text-primary" />
+                          <Badge variant="outline" className="text-primary border-primary">90 Minutes</Badge>
+                          <Badge variant="outline" className="text-accent border-accent">Interactive Panel</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Industry Trends & Insights Sessions</CardTitle>
+                        <CardDescription className="text-lg">Latest hiring practices, market analysis, and future opportunities discussion</CardDescription>
                       </div>
-                    ))}
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Market Analysis", "Hiring Trends", "Skill Demands", "Career Mapping"].map((topic, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                              <BarChart3 className="w-4 h-4 text-primary" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{topic}</div>
+                              <div className="text-xs text-muted-foreground">Core focus area</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
-            ))}
-          </div>
+            </TabsContent>
+            
+            <TabsContent value="networking" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                      src={asset('events/hr-campus-connect/gd_session.jpg')}
+                      alt="Interactive Networking Session"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Network className="h-6 w-6 text-secondary" />
+                          <Badge variant="outline" className="text-secondary border-secondary">120 Minutes</Badge>
+                          <Badge variant="outline" className="text-accent border-accent">Workshop Style</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Interactive Networking Workshops</CardTitle>
+                        <CardDescription className="text-lg">Direct student-HR professional interactions and networking opportunities</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["One-on-One Sessions", "Group Discussions", "Experience Sharing", "Q&A Rounds"].map((activity, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center">
+                              <MessageCircle className="w-4 h-4 text-secondary" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{activity}</div>
+                              <div className="text-xs text-muted-foreground">Networking format</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="guidance" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                      src={asset('events/hr-campus-connect/mock_interviews.jpg')}
+                      alt="Career Guidance Session"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <BookOpen className="h-6 w-6 text-accent" />
+                          <Badge variant="outline" className="text-accent border-accent">150 Minutes</Badge>
+                          <Badge variant="outline" className="text-chart1 border-chart1">Mentorship Program</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Career Guidance & Mentorship</CardTitle>
+                        <CardDescription className="text-lg">Professional development workshops and personalized career guidance</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Resume Reviews", "Mock Interviews", "Soft Skills", "Career Planning"].map((service, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
+                              <Target className="w-4 h-4 text-accent" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{service}</div>
+                              <div className="text-xs text-muted-foreground">Development area</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="culture" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                      src={asset('events/hr-campus-connect/work_ethics.jpg')}
+                      alt="Corporate Culture Session"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Building2 className="h-6 w-6 text-chart1" />
+                          <Badge variant="outline" className="text-chart1 border-chart1">180 Minutes</Badge>
+                          <Badge variant="outline" className="text-primary border-primary">Immersive Experience</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Corporate Culture Immersion</CardTitle>
+                        <CardDescription className="text-lg">Workplace readiness and corporate environment understanding sessions</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Workplace Ethics", "Communication", "Team Dynamics", "Professional Conduct"].map((aspect, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-chart1/10 rounded-lg flex items-center justify-center">
+                              <Building2 className="w-4 h-4 text-chart1" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{aspect}</div>
+                              <div className="text-xs text-muted-foreground">Cultural element</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+          </Tabs>
         </section>
 
         <Separator className="my-12" />
@@ -266,146 +499,69 @@ export const HRCampusConnectPage: React.FC = () => {
           <div className="text-center space-y-4">
             <Badge variant="secondary" className="px-4 py-2">Program Features</Badge>
             <h2 className="text-4xl font-bold">Key Features</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive HR connect program designed for maximum industry exposure and guidance
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              Comprehensive HR Campus Connect program designed for maximum industry exposure, professional networking, and career development through structured interactions with experienced HR professionals and industry leaders.
             </p>
           </div>
           
-          <div className="space-y-12">
+          <div className="space-y-16">
             {keyFeatures.map((feature, index) => (
-              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                    <feature.icon className={`h-10 w-10 text-${feature.color}`} />
+              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300 overflow-hidden my-6">
+                <div className={`grid lg:grid-cols-5 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                  {/* Feature Image */}
+                  <div className={`lg:col-span-2 relative ${index % 2 === 1 ? 'lg:col-start-4' : ''} flex items-center justify-center p-6`}>
+                    <div className="relative w-full max-w-sm mx-auto">
+                      <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl">
+                        <div className={`absolute inset-0 bg-gradient-to-br from-${feature.color}/20 via-${feature.color}/10 to-transparent z-10`} />
+                        <img
+                          src={
+                            index === 0 ? asset('events/hr-campus-connect/company_insights.jpg') :
+                            index === 1 ? asset('events/hr-campus-connect/market_trends.jpg') :
+                            index === 2 ? asset('events/hr-campus-connect/skill_development.jpg') :
+                            index === 3 ? asset('events/hr-campus-connect/industry-acadamic.jpg') :
+                            "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                          }
+                          alt={`${feature.title} illustration`}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className={`absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-${feature.color}/40 to-${feature.color}/30 rounded-2xl flex items-center justify-center z-20 backdrop-blur-sm border border-white/20`}>
+                          <feature.icon className={`h-7 w-7 text-${feature.color}`} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <CardTitle className="text-2xl">{index + 1}. {feature.title}</CardTitle>
-                  <CardDescription className="text-lg">{feature.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {feature.items.map((item, itemIndex) => (
-                      <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors">
-                        <CardContent className="p-6 space-y-3">
-                          <div className={`w-12 h-12 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-lg flex items-center justify-center`}>
-                            <item.icon className={`h-6 w-6 text-${feature.color}`} />
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-semibold">{item.title}</h4>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
+
+                  {/* Feature Content */}
+                  <div className={`lg:col-span-3 p-4 md:p-8 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <Badge variant="secondary" className="px-3 py-1">
+                          Feature {index + 1}
+                        </Badge>
+                        <CardTitle className="text-3xl font-bold">{feature.title}</CardTitle>
+                        <CardDescription className="text-lg leading-relaxed">{feature.description}</CardDescription>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {feature.items.map((item, itemIndex) => (
+                          <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors py-3 px-1 my-1">
+                            <CardContent className="px-3 py-2 flex items-start gap-3">
+                              <div className={`w-8 h-8 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                                <item.icon className={`h-4 w-4 text-${feature.color}`} />
+                              </div>
+                              <div className="space-y-1">
+                                <h4 className="font-semibold text-base leading-tight">{item.title}</h4>
+                                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Connect Process */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Session Flow</Badge>
-            <h2 className="text-4xl font-bold">How HRCC Sessions Work</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Structured approach to connecting industry professionals with academic institutions
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {connectProcess.map((step, index) => (
-              <div key={index} className="relative">
-                <Card className={`text-center border-2 hover:border-${step.color}/50 transition-all duration-300 hover:shadow-xl group`}>
-                  <CardHeader className="space-y-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br from-${step.color}/20 to-${step.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                      <span className={`text-3xl font-bold text-${step.color}`}>{step.number}</span>
-                    </div>
-                    <div className="space-y-3">
-                      <CardTitle className="text-lg">{step.title}</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">{step.desc}</CardDescription>
-                    </div>
-                  </CardHeader>
-                </Card>
-                {index < 3 && (
-                  <ChevronRight className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-muted-foreground h-8 w-8" />
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* HR Professional Showcase */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Industry Professionals</Badge>
-            <h2 className="text-4xl font-bold">Connect with Industry Leaders</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Experienced HR professionals sharing real-world insights and career guidance
-            </p>
-          </div>
-
-          <Alert className="border-2 border-secondary/20 bg-gradient-to-r from-secondary/5 to-accent/5 max-w-4xl mx-auto">
-            <Network className="h-5 w-5" />
-            <AlertDescription className="text-lg">
-              Students and faculty connect with <strong>experienced HR professionals</strong> for real-world discussions on{' '}
-              <strong>corporate culture, hiring strategies, and expectations</strong> with opportunities to{' '}
-              <strong>clarify doubts and prepare better for placements</strong>.
-            </AlertDescription>
-          </Alert>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="bg-muted/30 border-2">
-              <CardContent className="p-6 text-center space-y-4">
-                <Avatar className="h-16 w-16 border-2 border-primary/20 mx-auto">
-                  <AvatarImage src="api/placeholder/64/64" />
-                  <AvatarFallback className="bg-primary/10 text-primary font-bold text-lg">HR</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="font-semibold text-lg">Senior HR Leaders</div>
-                  <div className="text-sm text-muted-foreground">MNCs & Fortune 500 Companies</div>
-                </div>
-                <p className="text-sm text-muted-foreground italic">
-                  "Sharing hiring trends and corporate expectations"
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-muted/30 border-2">
-              <CardContent className="p-6 text-center space-y-4">
-                <Avatar className="h-16 w-16 border-2 border-secondary/20 mx-auto">
-                  <AvatarImage src="api/placeholder/64/64" />
-                  <AvatarFallback className="bg-secondary/10 text-secondary font-bold text-lg">RC</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="font-semibold text-lg">Recruitment Consultants</div>
-                  <div className="text-sm text-muted-foreground">Industry Specialists</div>
-                </div>
-                <p className="text-sm text-muted-foreground italic">
-                  "Providing market insights and placement guidance"
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-muted/30 border-2">
-              <CardContent className="p-6 text-center space-y-4">
-                <Avatar className="h-16 w-16 border-2 border-accent/20 mx-auto">
-                  <AvatarImage src="api/placeholder/64/64" />
-                  <AvatarFallback className="bg-accent/10 text-accent font-bold text-lg">TL</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="font-semibold text-lg">Team Leaders</div>
-                  <div className="text-sm text-muted-foreground">Tech & Business Domains</div>
-                </div>
-                <p className="text-sm text-muted-foreground italic">
-                  "Sharing workplace realities and skill requirements"
-                </p>
-              </CardContent>
-            </Card>
           </div>
         </section>
 
@@ -414,10 +570,10 @@ export const HRCampusConnectPage: React.FC = () => {
         {/* Why Choose */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative p-10 space-y-8">
+          <div className="relative p-4 md:p-10 space-y-8">
             <div className="text-center space-y-4">
               <Badge variant="secondary" className="px-4 py-2">
-                <Trophy className="w-4 h-4 mr-2" />
+                <Award className="w-4 h-4 mr-2" />
                 Why Choose HRCC
               </Badge>
               <h2 className="text-4xl font-bold">Why Choose HR Campus Connect?</h2>
@@ -443,103 +599,97 @@ export const HRCampusConnectPage: React.FC = () => {
 
         <Separator className="my-12" />
 
-        {/* Outcomes */}
+        {/* Success Metrics */}
         <section className="space-y-8">
           <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Program Results</Badge>
-            <h2 className="text-4xl font-bold">Outcomes</h2>
+            <Badge variant="secondary" className="px-4 py-2">Program Impact</Badge>
+            <h2 className="text-4xl font-bold">HRCC Success Metrics</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Measurable benefits that prepare students for successful transition to corporate careers
+              Real results from our industry-academia bridging initiatives
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {outcomes.map((outcome, index) => (
-              <Card key={index} className="border-2 text-center hover:shadow-xl transition-all duration-300">
+            {successMetrics.map((metric, index) => (
+              <Card key={index} className="border-2 text-center hover:shadow-xl transition-all duration-300 group">
                 <CardHeader className="space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto">
-                    <outcome.icon className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <BarChart3 className="h-8 w-8 text-primary" />
                   </div>
                   <div className="space-y-3">
-                    <CardTitle className="text-lg">{outcome.title}</CardTitle>
-                    <CardDescription className="text-sm">{outcome.description}</CardDescription>
+                    <div className="text-3xl font-bold text-primary">{metric.value}</div>
+                    <CardTitle className="text-lg">{metric.label}</CardTitle>
+                    <CardDescription className="text-sm">{metric.description}</CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent className="pb-6">
-                  <div className="space-y-3">
-                    <div className="text-2xl font-bold text-primary">{outcome.progress}%</div>
-                    <Progress value={outcome.progress} className="h-3" />
-                  </div>
-                </CardContent>
               </Card>
             ))}
           </div>
         </section>
 
-        {/* Success Metrics */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-10">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">HRCC Program Impact</h3>
-              <p className="text-muted-foreground">Real results from our HR-student connect initiatives</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { label: "HRCC Sessions Conducted", value: "300+", progress: 95 },
-                { label: "Students Connected", value: "15,000+", progress: 90 },
-                { label: "HR Professionals", value: "500+", progress: 85 },
-                { label: "Institution Partnerships", value: "120+", progress: 88 }
-              ].map((stat, index) => (
-                <Card key={index} className="text-center border-2 bg-background/90 backdrop-blur-sm">
-                  <CardContent className="pt-6 space-y-3">
-                    <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-                    <Progress value={stat.progress} className="h-2" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Final CTA */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-12 text-center space-y-8">
-            <div className="space-y-4">
-              <Badge variant="secondary" className="px-4 py-2 text-base">
-                <Zap className="w-4 h-4 mr-2" />
-                Connect Today
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold">Prepare Your Students with First-Hand HR Insights</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Join hundreds of institutions who trust Fresherbot's <strong>HR Campus Connect</strong> to bridge the gap between 
-                academia and industry. Give your students the competitive advantage of direct HR interaction and industry insights.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-              <Button size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/request-session">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Request a Session
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/partner-with-us">
-                  <Handshake className="mr-2 h-5 w-5" />
-                  Partner With Us
-                </Link>
-              </Button>
-            </div>
-            
-            <div className="pt-6">
-              <div className="text-sm text-muted-foreground">
-                <Users className="inline h-4 w-4 mr-1" />
-                <strong>Direct HR Connect</strong> • <strong>Industry Insights</strong> • <strong>Career Guidance</strong>
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl -z-10" />
+
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-4 md:p-12">
+            {/* Left Content */}
+            <div className="space-y-8 text-center lg:text-left relative z-20">
+              <div className="space-y-4">
+                <Badge variant="secondary" className="px-4 py-2 text-base">
+                  <Zap className="w-4 h-4 mr-2" />
+                  Connect Today
+                </Badge>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Prepare Students with Industry Insights</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Join hundreds of institutions who trust Fresherbot's HR Campus Connect to bridge the gap between
+                  academia and industry. Give your students the competitive advantage of direct HR interaction.
+                </p>
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 relative z-30">
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/request-session">
+                    <PlayCircle className="mr-2 h-5 w-5" />
+                    Request Session
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/partner-with-us">
+                    <Handshake className="mr-2 h-5 w-5" />
+                    Partner With Us
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="pt-6">
+                <div className="text-sm text-muted-foreground flex flex-wrap justify-center lg:justify-start gap-4">
+                  <span>✅ <strong>Direct HR Interaction</strong></span>
+                  <span>✅ <strong>Industry Insights</strong></span>
+                  <span>✅ <strong>Career Guidance</strong></span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative order-first lg:order-last">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+                <video
+                  src={asset('events/hr-campus-connect/HR-video.mp4')}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                 
+                >
+                  Video not supported
+                </video>
+              </div>
+
+              {/* Floating Elements - Behind content */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent/10 rounded-full blur-xl -z-10" />
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-xl -z-10" />
             </div>
           </div>
         </section>

@@ -4,8 +4,7 @@ import { Button } from '@voilajsx/uikit/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voilajsx/uikit/card';
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
-import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
-import { Progress } from '@voilajsx/uikit/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@voilajsx/uikit/tabs';
 import {
   Rocket,
   Target,
@@ -29,50 +28,155 @@ import {
   Building2,
   Video,
   Play,
-  Handshake
+  Handshake,
+  Users,
+  BookOpen,
+  Clock,
+  PlayCircle,
+  Network,
+  FileText
 } from 'lucide-react';
 import { SEO } from '../components';
+import { asset } from '../utils/asset';
 
 export const FounderTalksPage: React.FC = () => {
-  const studentGains = [
+  const keyFeatures = [
     {
       icon: Rocket,
       title: "Startup Stories that Inspire",
-      description: "First-hand accounts of successful company building and entrepreneurial journeys",
+      description: "First-hand accounts of successful company building, entrepreneurial journeys, and breakthrough moments that motivate students to dream bigger and take bold career steps",
       color: "primary",
       items: [
-        { title: "Company Building", description: "How successful founders built companies from scratch", icon: Building2 },
-        { title: "Learning from Failures", description: "Lessons from failures, challenges, and turning points", icon: Target },
-        { title: "Bold Career Steps", description: "Motivation to take bold steps in career and entrepreneurship", icon: Rocket }
+        {
+          title: "Company Building Journey",
+          description: "How successful founders built companies from scratch, overcame challenges, and achieved remarkable growth",
+          icon: Building2
+        },
+        {
+          title: "Learning from Failures", 
+          description: "Real stories of setbacks, failures, and turning points that shaped entrepreneurial success",
+          icon: Target
+        },
+        {
+          title: "Bold Career Steps",
+          description: "Motivation to take calculated risks, pursue ambitious goals, and build innovative solutions",
+          icon: Rocket
+        }
       ]
     },
     {
-      icon: Target,
+      icon: Brain,
       title: "Career Guidance from Leaders",
-      description: "Practical advice on career planning, skill development, and industry readiness",
-      color: "secondary",
+      description: "Practical advice on career planning, skill development, industry readiness, and strategic thinking from experienced entrepreneurs and business leaders",
+      color: "secondary", 
       items: [
-        { title: "Career Planning", description: "Strategic advice on career development and skill building", icon: BarChart3 },
-        { title: "Opportunity Recognition", description: "How to identify opportunities and adapt to change", icon: Eye },
-        { title: "Success Mindset", description: "Cultivating the right mindset for achievement", icon: Brain }
+        {
+          title: "Strategic Career Planning",
+          description: "Long-term career development strategies, skill building roadmaps, and market positioning advice",
+          icon: BarChart3
+        },
+        {
+          title: "Opportunity Recognition",
+          description: "How to identify market opportunities, adapt to change, and leverage emerging trends for career growth",
+          icon: Eye
+        },
+        {
+          title: "Success Mindset Development",
+          description: "Cultivating entrepreneurial thinking, resilience, and leadership qualities for professional achievement",
+          icon: Brain
+        }
       ]
     },
     {
       icon: Star,
-      title: "Motivational Sessions",
-      description: "Insightful sessions that boost confidence, ambition, and entrepreneurial spirit",
+      title: "Motivational & Interactive Sessions",
+      description: "Engaging sessions that boost confidence, ambition, and entrepreneurial spirit through interactive discussions, Q&A rounds, and direct founder engagement",
       color: "accent",
       items: [
-        { title: "Confidence Building", description: "Sessions that boost confidence and ambition", icon: Trophy },
-        { title: "Real Impact Stories", description: "How passion and perseverance create lasting impact", icon: Award },
-        { title: "Direct Engagement", description: "Interactive Q&A with founders and leaders", icon: MessageCircle }
+        {
+          title: "Confidence Building Sessions",
+          description: "Inspiring talks that boost student confidence, ambition, and belief in their entrepreneurial potential",
+          icon: Trophy
+        },
+        {
+          title: "Real Impact Stories",
+          description: "How passion, perseverance, and innovation create lasting impact in business and society",
+          icon: Award
+        },
+        {
+          title: "Direct Founder Interaction",
+          description: "Interactive Q&A sessions, personal stories sharing, and one-on-one networking opportunities",
+          icon: MessageCircle
+        }
       ]
+    },
+    {
+      icon: Network,
+      title: "Industry Network Building",
+      description: "Connect students with entrepreneurial ecosystem leaders, build lasting professional relationships, and create pathways for mentorship and career opportunities",
+      color: "chart1",
+      items: [
+        {
+          title: "Professional Networking",
+          description: "Build connections with founders, entrepreneurs, and industry leaders for ongoing guidance and opportunities",
+          icon: Network
+        },
+        {
+          title: "Mentorship Opportunities",
+          description: "Long-term mentoring relationships with successful entrepreneurs and business leaders",
+          icon: Handshake
+        },
+        {
+          title: "Ecosystem Access",
+          description: "Introduction to startup ecosystems, investor networks, and entrepreneurial communities",
+          icon: Users
+        }
+      ]
+    }
+  ];
+
+  const sessionFormats = [
+    {
+      title: "Entrepreneurial Journey Sessions",
+      description: "Founders share their complete business building stories and key decisions",
+      technologies: ["Startup Stories", "Business Models", "Growth Strategies", "Market Insights"],
+      icon: Rocket,
+      color: "primary",
+      duration: "90 minutes",
+      format: "Story-telling Session"
+    },
+    {
+      title: "Interactive Leadership Workshops", 
+      description: "Hands-on sessions with leadership exercises and team building activities",
+      technologies: ["Leadership Skills", "Team Building", "Decision Making", "Problem Solving"],
+      icon: Users,
+      color: "secondary", 
+      duration: "120 minutes",
+      format: "Workshop Style"
+    },
+    {
+      title: "Career Strategy Masterclasses",
+      description: "Strategic career guidance and professional development planning sessions",
+      technologies: ["Career Planning", "Skill Development", "Industry Insights", "Personal Branding"],
+      icon: Target,
+      color: "accent",
+      duration: "150 minutes", 
+      format: "Masterclass Program"
+    },
+    {
+      title: "Innovation & Ideation Labs",
+      description: "Creative thinking sessions focused on innovation and entrepreneurial mindset",
+      technologies: ["Innovation Thinking", "Ideation Techniques", "Startup Concepts", "Market Analysis"],
+      icon: Lightbulb,
+      color: "chart1",
+      duration: "180 minutes",
+      format: "Interactive Lab"
     }
   ];
 
   const founderTypes = [
     {
-      title: "Startup Founders",
+      title: "Startup Founders", 
       description: "Tech startup pioneers and unicorn builders",
       achievements: ["Billion-dollar valuations", "Disruptive innovations", "Market leadership", "Global scaling"],
       icon: Rocket,
@@ -80,7 +184,7 @@ export const FounderTalksPage: React.FC = () => {
     },
     {
       title: "Serial Entrepreneurs",
-      description: "Multi-company builders with diverse experiences",
+      description: "Multi-company builders with diverse experiences", 
       achievements: ["Multiple exits", "Industry expertise", "Investment insights", "Scaling strategies"],
       icon: TrendingUp,
       color: "secondary"
@@ -95,126 +199,393 @@ export const FounderTalksPage: React.FC = () => {
   ];
 
   const benefits = [
-    "Builds entrepreneurial spirit among students",
-    "Provides real-world perspective beyond textbooks", 
-    "Connects students with leaders and innovators",
-    "Encourages risk-taking, innovation, and leadership qualities"
+    "Builds entrepreneurial spirit and innovation mindset among students",
+    "Provides real-world perspective beyond traditional academic learning", 
+    "Connects students directly with successful leaders and innovators",
+    "Encourages calculated risk-taking, creative thinking, and leadership development",
+    "Inspires students to pursue ambitious career goals and startup ventures",
+    "Creates lasting professional networks and mentorship opportunities"
   ];
 
-  const outcomes = [
-    {
-      title: "Big Dreams",
-      description: "Students feel motivated to dream big and achieve more",
-      icon: Star,
-      progress: 95
-    },
-    {
-      title: "Entrepreneurial Culture",
-      description: "Institutions foster innovation mindset on campus",
-      icon: Lightbulb,
-      progress: 90
-    },
-    {
-      title: "Industry Connection",
-      description: "Stronger industry-academia relationships",
-      icon: Handshake,
-      progress: 88
-    },
-    {
-      title: "Leadership Qualities",
-      description: "Enhanced risk-taking and innovation capabilities",
-      icon: Trophy,
-      progress: 92
-    }
-  ];
-
-  const talkProcess = [
-    { 
-      number: "1", 
-      title: "Founder Selection", 
-      desc: "Curate inspiring leaders and entrepreneurs for your campus",
-      icon: UserCheck,
-      color: "primary"
-    },
-    { 
-      number: "2", 
-      title: "Session Planning", 
-      desc: "Coordinate logistics and customize content for your audience",
-      icon: Calendar,
-      color: "secondary"
-    },
-    { 
-      number: "3", 
-      title: "Inspirational Talk", 
-      desc: "Founder shares journey, insights, and interactive Q&A",
-      icon: Mic,
-      color: "accent"
-    },
-    { 
-      number: "4", 
-      title: "Impact & Follow-up", 
-      desc: "Measure engagement and build lasting connections",
-      icon: TrendingUp,
-      color: "chart1"
-    }
+  const successMetrics = [
+    { label: "Founder Sessions Hosted", value: "200+", description: "Inspiring talks delivered", progress: 95 },
+    { label: "Students Inspired", value: "50,000+", description: "Direct founder interaction", progress: 92 },
+    { label: "Entrepreneurial Leaders", value: "150+", description: "Industry visionaries", progress: 88 },
+    { label: "Innovation Mindset", value: "94%", description: "Student transformation", progress: 94 }
   ];
 
   return (
     <>
       <SEO
-        title="Founder Talks - Learn Directly from the Visionaries"
-        description="Inspiring campus sessions with startup founders and industry leaders sharing real-life journeys, career insights, and entrepreneurial success strategies."
+        title="Founder Talks - Learn Directly from Entrepreneurial Visionaries"
+        description="Inspiring campus sessions with startup founders and industry leaders sharing real-life journeys, career insights, and entrepreneurial success strategies for student motivation."
       />
-      <div className="space-y-16">
+      <div className="space-y-20">
         {/* Hero Section */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative text-center py-16 px-8">
-            <div className="space-y-8 max-w-5xl mx-auto">
-              <div className="space-y-2">
-                <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                  <Rocket className="w-4 h-4 mr-2" />
-                  Founder Talks
-                </Badge>
+        <section className="relative overflow-hidden md:py-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
+
+          <div className="relative container mx-auto">
+            <div className="grid lg:grid-cols-5 gap-16 items-center">
+              {/* Left Content */}
+              <div className="lg:col-span-3 space-y-10">
+                <div className="space-y-6">
+                  <Badge variant="secondary" className="bg-muted text-foreground inline-flex items-center gap-2 px-4 py-2">
+                    <Rocket className="w-4 h-4" />
+                    Entrepreneurial Inspiration Platform
+                  </Badge>
+
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-primary via-accent to-orange-500 bg-clip-text text-transparent">
+                      Learn Directly from
+                    </span>
+                    <br />
+                    Entrepreneurial Visionaries
+                  </h1>
+
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
+                    Connect students with <strong className="text-foreground">startup founders</strong>, gain <strong className="text-foreground">entrepreneurial wisdom</strong>, and build <strong className="text-foreground">innovation mindset</strong> for career success.
+                  </p>
+                </div>
+
+                <div className="grid sm:grid-cols-3 gap-6 py-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Rocket className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Startup Stories</div>
+                      <div className="text-xs text-muted-foreground">Real journeys</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Brain className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Career Guidance</div>
+                      <div className="text-xs text-muted-foreground">Expert advice</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Star className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Inspiration</div>
+                      <div className="text-xs text-muted-foreground">Motivational sessions</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className="text-lg px-8 py-6 shadow-lg" asChild>
+                    <Link to="/book-founder-session">
+                      <Mic className="mr-2 h-5 w-5" />
+                      Book Founder Session
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                    <Link to="/partner-with-us">
+                      Partner With Us
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="flex items-center gap-6 text-sm text-muted-foreground pt-4">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    No cost sessions
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Renowned founders
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Interactive Q&A
+                  </div>
+                </div>
               </div>
-              
-              <div className="space-y-4">
-                <h1 className="voila-heading text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Learn Directly from the Visionaries
-                </h1>
-              </div>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                At <strong className="text-primary">Fresherbot</strong>, we believe true inspiration comes from those who've walked the path of{' '}
-                <Badge variant="outline" className="mx-1">innovation</Badge>,{' '}
-                <Badge variant="outline" className="mx-1">entrepreneurship</Badge>, and{' '}
-                <Badge variant="outline" className="mx-1">leadership</Badge>.
-              </p>
+              {/* Right Image */}
+              <div className="lg:col-span-2 relative md:pr-10">
+                <div className="relative">
+                  <img
+                    src={asset('events/founder-talks/founders-hero.jpg')}
+                    alt="Founder Talks Entrepreneurial Sessions"
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                  />
 
-              <Alert className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5 max-w-4xl mx-auto">
-                <Sparkles className="h-5 w-5" />
-                <AlertDescription className="text-lg">
-                  Our <strong>Founder Talks</strong> bring <strong>startup founders, entrepreneurs, and industry leaders</strong> to campuses 
-                  to share their <strong>real-life journeys, career insights, and success strategies</strong>.
-                </AlertDescription>
-              </Alert>
+                  {/* Floating Stats Cards */}
+                  <div className="absolute -top-4 -left-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">150+</div>
+                    <div className="text-sm text-muted-foreground">Founders</div>
+                  </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Button size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/book-founder-session">
-                    <Mic className="mr-2 h-5 w-5" />
-                    Book a Founder Session
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/partner-with-us">
-                    <Handshake className="mr-2 h-5 w-5" />
-                    Partner With Us
-                  </Link>
-                </Button>
+                  <div className="absolute -bottom-4 -right-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">94%</div>
+                    <div className="text-sm text-muted-foreground">Inspiration Rate</div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <Separator className="my-12" />
+
+        {/* Session Formats Showcase */}
+        <section className="space-y-8">
+          <div className="text-center space-y-4">
+            <Badge variant="secondary" className="px-4 py-2">Session Formats</Badge>
+            <h2 className="text-4xl font-bold">Choose Your Inspiration Format</h2>
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              Multiple session formats designed for different learning objectives and entrepreneurial development needs. Each format offers unique opportunities for student-founder interaction and comprehensive career inspiration.
+            </p>
+          </div>
+          
+          <Tabs defaultValue="journey" className="w-full">
+            <TabsList className="grid w-full grid-cols-4 max-w-3xl mx-auto">
+              <TabsTrigger value="journey">Journey</TabsTrigger>
+              <TabsTrigger value="leadership">Leadership</TabsTrigger>
+              <TabsTrigger value="strategy">Strategy</TabsTrigger>
+              <TabsTrigger value="innovation">Innovation</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="journey" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                      src={asset('events/founder-talks/journey.jpg')}
+                      alt="Entrepreneurial Journey Session"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Rocket className="h-6 w-6 text-primary" />
+                          <Badge variant="outline" className="text-primary border-primary">90 Minutes</Badge>
+                          <Badge variant="outline" className="text-accent border-accent">Story-telling Session</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Entrepreneurial Journey Sessions</CardTitle>
+                        <CardDescription className="text-lg">Founders share their complete business building stories and key decisions</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Startup Stories", "Business Models", "Growth Strategies", "Market Insights"].map((topic, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                              <Rocket className="w-4 h-4 text-primary" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{topic}</div>
+                              <div className="text-xs text-muted-foreground">Key focus area</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+            
+            <TabsContent value="leadership" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                      src={asset('events/founder-talks/leader.jpg')}
+                      alt="Interactive Leadership Workshop"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Users className="h-6 w-6 text-secondary" />
+                          <Badge variant="outline" className="text-secondary border-secondary">120 Minutes</Badge>
+                          <Badge variant="outline" className="text-accent border-accent">Workshop Style</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Interactive Leadership Workshops</CardTitle>
+                        <CardDescription className="text-lg">Hands-on sessions with leadership exercises and team building activities</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Leadership Skills", "Team Building", "Decision Making", "Problem Solving"].map((activity, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center">
+                              <Users className="w-4 h-4 text-secondary" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{activity}</div>
+                              <div className="text-xs text-muted-foreground">Workshop component</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="strategy" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                      src={asset('events/founder-talks/skill.jpg')}
+                      alt="Career Strategy Masterclass"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Target className="h-6 w-6 text-accent" />
+                          <Badge variant="outline" className="text-accent border-accent">150 Minutes</Badge>
+                          <Badge variant="outline" className="text-chart1 border-chart1">Masterclass Program</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Career Strategy Masterclasses</CardTitle>
+                        <CardDescription className="text-lg">Strategic career guidance and professional development planning sessions</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Career Planning", "Skill Development", "Industry Insights", "Personal Branding"].map((service, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
+                              <Target className="w-4 h-4 text-accent" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{service}</div>
+                              <div className="text-xs text-muted-foreground">Strategy element</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="innovation" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                      src={asset('events/founder-talks/ideation.jpg')}
+                      alt="Innovation & Ideation Lab"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Lightbulb className="h-6 w-6 text-chart1" />
+                          <Badge variant="outline" className="text-chart1 border-chart1">180 Minutes</Badge>
+                          <Badge variant="outline" className="text-primary border-primary">Interactive Lab</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Innovation & Ideation Labs</CardTitle>
+                        <CardDescription className="text-lg">Creative thinking sessions focused on innovation and entrepreneurial mindset</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Innovation Thinking", "Ideation Techniques", "Startup Concepts", "Market Analysis"].map((aspect, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-chart1/10 rounded-lg flex items-center justify-center">
+                              <Lightbulb className="w-4 h-4 text-chart1" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{aspect}</div>
+                              <div className="text-xs text-muted-foreground">Innovation focus</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </section>
+
+        <Separator className="my-12" />
+
+        {/* Key Features */}
+        <section className="space-y-10">
+          <div className="text-center space-y-4">
+            <Badge variant="secondary" className="px-4 py-2">Program Features</Badge>
+            <h2 className="text-4xl font-bold">Key Features</h2>
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              Comprehensive Founder Talks program designed for maximum entrepreneurial exposure, inspirational learning, and career development through structured interactions with successful founders and industry leaders.
+            </p>
+          </div>
+          
+          <div className="space-y-16">
+            {keyFeatures.map((feature, index) => (
+              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300 overflow-hidden my-6">
+                <div className={`grid lg:grid-cols-5 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                  {/* Feature Image */}
+                  <div className={`lg:col-span-2 relative ${index % 2 === 1 ? 'lg:col-start-4' : ''} flex items-center justify-center p-6`}>
+                    <div className="relative w-full max-w-sm mx-auto">
+                      <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl">
+                        <div className={`absolute inset-0 bg-gradient-to-br from-${feature.color}/20 via-${feature.color}/10 to-transparent z-10`} />
+                        <img
+                          src={
+                            index === 0 ? asset('events/founder-talks/inspire.jpg') :
+                            index === 1 ? asset('events/founder-talks/career.jpg') :
+                            index === 2 ? asset('events/founder-talks/interaction.jpg') :
+                            index === 3 ? asset('events/founder-talks/network.jpg') :
+                            "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                          }
+                          alt={`${feature.title} illustration`}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className={`absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-${feature.color}/40 to-${feature.color}/30 rounded-2xl flex items-center justify-center z-20 backdrop-blur-sm border border-white/20`}>
+                          <feature.icon className={`h-7 w-7 text-${feature.color}`} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Feature Content */}
+                  <div className={`lg:col-span-3 p-4 md:p-8 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <Badge variant="secondary" className="px-3 py-1">
+                          Feature {index + 1}
+                        </Badge>
+                        <CardTitle className="text-3xl font-bold">{feature.title}</CardTitle>
+                        <CardDescription className="text-lg leading-relaxed">{feature.description}</CardDescription>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {feature.items.map((item, itemIndex) => (
+                          <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors py-3 px-1 my-1">
+                            <CardContent className="px-3 py-2 flex items-start gap-3">
+                              <div className={`w-8 h-8 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                                <item.icon className={`h-4 w-4 text-${feature.color}`} />
+                              </div>
+                              <div className="space-y-1">
+                                <h4 className="font-semibold text-base leading-tight">{item.title}</h4>
+                                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -258,143 +629,18 @@ export const FounderTalksPage: React.FC = () => {
 
         <Separator className="my-12" />
 
-        {/* What Students Gain */}
-        <section className="space-y-10">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Student Benefits</Badge>
-            <h2 className="text-4xl font-bold">What Students Gain</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive learning experience that combines inspiration, guidance, and practical insights
-            </p>
-          </div>
-          
-          <div className="space-y-12">
-            {studentGains.map((gain, index) => (
-              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${gain.color}/20 to-${gain.color}/10 rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                    <gain.icon className={`h-10 w-10 text-${gain.color}`} />
-                  </div>
-                  <CardTitle className="text-2xl">{gain.title}</CardTitle>
-                  <CardDescription className="text-lg">{gain.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {gain.items.map((item, itemIndex) => (
-                      <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors">
-                        <CardContent className="p-6 space-y-3">
-                          <div className={`w-12 h-12 bg-gradient-to-br from-${gain.color}/20 to-${gain.color}/10 rounded-lg flex items-center justify-center`}>
-                            <item.icon className={`h-6 w-6 text-${gain.color}`} />
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-semibold">{item.title}</h4>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Video Showcase Section */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Session Highlights</Badge>
-            <h2 className="text-4xl font-bold">Founder Stories in Action</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Watch inspiring moments from our founder talks and see the impact on students
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-2 bg-gradient-to-br from-background to-muted/30 hover:shadow-xl transition-all duration-300 group">
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                  <Video className="h-10 w-10 text-primary" />
-                </div>
-                <div className="space-y-2">
-                  <CardTitle className="text-lg">Startup Journey Stories</CardTitle>
-                  <CardDescription>Real founders sharing their entrepreneurial journeys</CardDescription>
-                </div>
-                <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <Play className="mr-2 h-4 w-4" />
-                  Watch Stories
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 bg-gradient-to-br from-background to-muted/30 hover:shadow-xl transition-all duration-300 group">
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-20 h-20 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                  <MessageCircle className="h-10 w-10 text-secondary" />
-                </div>
-                <div className="space-y-2">
-                  <CardTitle className="text-lg">Student Interactions</CardTitle>
-                  <CardDescription>Q&A sessions and direct student engagement</CardDescription>
-                </div>
-                <Button variant="outline" className="w-full group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors">
-                  <Play className="mr-2 h-4 w-4" />
-                  View Interactions
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Talk Process */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Session Flow</Badge>
-            <h2 className="text-4xl font-bold">How Founder Talks Work</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Structured approach to bringing entrepreneurial inspiration to your campus
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {talkProcess.map((step, index) => (
-              <div key={index} className="relative">
-                <Card className={`text-center border-2 hover:border-${step.color}/50 transition-all duration-300 hover:shadow-xl group`}>
-                  <CardHeader className="space-y-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br from-${step.color}/20 to-${step.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                      <span className={`text-3xl font-bold text-${step.color}`}>{step.number}</span>
-                    </div>
-                    <div className="space-y-3">
-                      <CardTitle className="text-lg">{step.title}</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">{step.desc}</CardDescription>
-                    </div>
-                  </CardHeader>
-                </Card>
-                {index < 3 && (
-                  <ChevronRight className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-muted-foreground h-8 w-8" />
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Why Founder Talks Matter */}
+        {/* Why Choose */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative p-10 space-y-8">
+          <div className="relative p-4 md:p-10 space-y-8">
             <div className="text-center space-y-4">
               <Badge variant="secondary" className="px-4 py-2">
-                <Trophy className="w-4 h-4 mr-2" />
-                Why They Matter
+                <Award className="w-4 h-4 mr-2" />
+                Why Choose Founder Talks
               </Badge>
-              <h2 className="text-4xl font-bold">Why Founder Talks Matter</h2>
+              <h2 className="text-4xl font-bold">Why Choose Founder Talks?</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Essential experiences that shape entrepreneurial mindset and career perspectives
+                Direct entrepreneurial inspiration that transforms student mindset and career aspirations
               </p>
             </div>
             
@@ -415,103 +661,97 @@ export const FounderTalksPage: React.FC = () => {
 
         <Separator className="my-12" />
 
-        {/* Outcomes */}
+        {/* Success Metrics */}
         <section className="space-y-8">
           <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Session Impact</Badge>
-            <h2 className="text-4xl font-bold">Outcomes</h2>
+            <Badge variant="secondary" className="px-4 py-2">Program Impact</Badge>
+            <h2 className="text-4xl font-bold">Founder Talks Success Metrics</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Measurable transformation in student mindset and institutional culture
+              Real results from our entrepreneurial inspiration initiatives
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {outcomes.map((outcome, index) => (
-              <Card key={index} className="border-2 text-center hover:shadow-xl transition-all duration-300">
+            {successMetrics.map((metric, index) => (
+              <Card key={index} className="border-2 text-center hover:shadow-xl transition-all duration-300 group">
                 <CardHeader className="space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto">
-                    <outcome.icon className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <Rocket className="h-8 w-8 text-primary" />
                   </div>
                   <div className="space-y-3">
-                    <CardTitle className="text-lg">{outcome.title}</CardTitle>
-                    <CardDescription className="text-sm">{outcome.description}</CardDescription>
+                    <div className="text-3xl font-bold text-primary">{metric.value}</div>
+                    <CardTitle className="text-lg">{metric.label}</CardTitle>
+                    <CardDescription className="text-sm">{metric.description}</CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent className="pb-6">
-                  <div className="space-y-3">
-                    <div className="text-2xl font-bold text-primary">{outcome.progress}%</div>
-                    <Progress value={outcome.progress} className="h-3" />
-                  </div>
-                </CardContent>
               </Card>
             ))}
           </div>
         </section>
 
-        {/* Success Metrics */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-10">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">Founder Talks Impact</h3>
-              <p className="text-muted-foreground">Real results from our entrepreneurial inspiration sessions</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { label: "Founder Sessions", value: "200+", progress: 95 },
-                { label: "Students Inspired", value: "50,000+", progress: 90 },
-                { label: "Startup Founders", value: "150+", progress: 85 },
-                { label: "Campus Partners", value: "80+", progress: 88 }
-              ].map((stat, index) => (
-                <Card key={index} className="text-center border-2 bg-background/90 backdrop-blur-sm">
-                  <CardContent className="pt-6 space-y-3">
-                    <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-                    <Progress value={stat.progress} className="h-2" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Final CTA */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-12 text-center space-y-8">
-            <div className="space-y-4">
-              <Badge variant="secondary" className="px-4 py-2 text-base">
-                <Zap className="w-4 h-4 mr-2" />
-                Inspire Today
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold">Bring the Spirit of Entrepreneurship to Your Campus</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Join dozens of institutions who trust Fresherbot to bring <strong>inspiring founder stories and entrepreneurial wisdom</strong> 
-                directly to their students. Create lasting impact with visionary leaders.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-              <Button size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/book-founder-session">
-                  <Mic className="mr-2 h-5 w-5" />
-                  Book a Founder Session
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/partner-with-us">
-                  <Handshake className="mr-2 h-5 w-5" />
-                  Partner With Us
-                </Link>
-              </Button>
-            </div>
-            
-            <div className="pt-6">
-              <div className="text-sm text-muted-foreground">
-                <Rocket className="inline h-4 w-4 mr-1" />
-                <strong>Entrepreneurial Spirit</strong> • <strong>Real Success Stories</strong> • <strong>Direct Inspiration</strong>
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl -z-10" />
+
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-4 md:p-12">
+            {/* Left Content */}
+            <div className="space-y-8 text-center lg:text-left relative z-20">
+              <div className="space-y-4">
+                <Badge variant="secondary" className="px-4 py-2 text-base">
+                  <Zap className="w-4 h-4 mr-2" />
+                  Inspire Today
+                </Badge>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Bring Entrepreneurial Spirit to Your Campus</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Join dozens of institutions who trust Fresherbot's Founder Talks to bring inspiring entrepreneurial stories
+                  and innovative wisdom directly to students. Create lasting impact with visionary leaders.
+                </p>
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 relative z-30">
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/book-founder-session">
+                    <Mic className="mr-2 h-5 w-5" />
+                    Book Founder Session
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/partner-with-us">
+                    <Handshake className="mr-2 h-5 w-5" />
+                    Partner With Us
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="pt-6">
+                <div className="text-sm text-muted-foreground flex flex-wrap justify-center lg:justify-start gap-4">
+                  <span>✅ <strong>Entrepreneurial Stories</strong></span>
+                  <span>✅ <strong>Career Inspiration</strong></span>
+                  <span>✅ <strong>Innovation Mindset</strong></span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative order-first lg:order-last">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+                <video
+                  src={asset('events/founder-talks/founder-video.mp4')}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                 
+                >
+                  Video not supported
+                </video>
+              </div>
+
+              {/* Floating Elements - Behind content */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent/10 rounded-full blur-xl -z-10" />
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-xl -z-10" />
             </div>
           </div>
         </section>

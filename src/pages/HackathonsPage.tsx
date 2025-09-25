@@ -4,9 +4,7 @@ import { Button } from '@voilajsx/uikit/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@voilajsx/uikit/card';
 import { Badge } from '@voilajsx/uikit/badge';
 import { Separator } from '@voilajsx/uikit/separator';
-import { Alert, AlertDescription } from '@voilajsx/uikit/alert';
-import { Progress } from '@voilajsx/uikit/progress';
-import { Avatar, AvatarFallback, AvatarImage } from '@voilajsx/uikit/avatar';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@voilajsx/uikit/tabs';
 import {
   Zap,
   Code,
@@ -31,212 +29,286 @@ import {
   DollarSign,
   Building2,
   Star,
-  Group,
-  Phone
+  Users,
+  Phone,
+  PlayCircle,
+  Clock,
+  BarChart3,
+  Shield,
+  Cpu,
+  Smartphone,
+  MonitorSpeaker,
+  Wrench
 } from 'lucide-react';
 import { SEO } from '../components';
+import { asset } from '../utils/asset';
 
 export const HackathonsPage: React.FC = () => {
   const keyFeatures = [
     {
       icon: Code,
       title: "Pure Development Competitions",
-      description: "Focused on hands-on coding and building solutions from scratch with real-world problems",
+      description: "Focused on hands-on coding and building innovative solutions from scratch, tackling real-world problems with cutting-edge technology stacks and frameworks",
       color: "primary",
       items: [
-        { title: "Hands-On Coding", description: "Build solutions from scratch with pure development focus", icon: Code },
-        { title: "Real-World Problems", description: "Work on actual industry problem statements", icon: Target },
-        { title: "Team Collaboration", description: "Encourages teamwork and creative problem-solving", icon: Group }
-      ]
-    },
-    {
-      icon: Star,
-      title: "Showcase of Creativity & Technical Skills",
-      description: "Platform to demonstrate coding expertise and innovation with technical excellence",
-      color: "secondary",
-      items: [
-        { title: "Innovation Showcase", description: "Demonstrate coding expertise and creative solutions", icon: Lightbulb },
-        { title: "Technical Excellence", description: "Judged on originality, functionality, and skill", icon: Award },
-        { title: "Peer Recognition", description: "Stand out among peers and recruiters", icon: Eye }
+        {
+          title: "Hands-On Coding Challenges",
+          description: "Build complete solutions from scratch with pure development focus, no theoretical concepts - just real coding",
+          icon: Code
+        },
+        {
+          title: "Real-World Problem Statements",
+          description: "Work on actual industry challenges provided by leading companies and startups across various domains",
+          icon: Target
+        },
+        {
+          title: "Team Collaboration Experience",
+          description: "Form dynamic teams, distribute tasks, and experience professional development workflows under pressure",
+          icon: Users
+        }
       ]
     },
     {
       icon: Trophy,
-      title: "Exciting Rewards & Opportunities",
-      description: "Attractive prizes, recruitment opportunities, and portfolio building chances",
-      color: "accent",
+      title: "Showcase Technical Excellence",
+      description: "Platform to demonstrate coding expertise, innovation capabilities, and problem-solving skills with comprehensive evaluation by industry experts",
+      color: "secondary",
       items: [
-        { title: "Cash Prizes", description: "Attractive rewards for top-performing teams", icon: DollarSign },
-        { title: "Direct Recruitment", description: "Job opportunities from participating companies", icon: Briefcase },
-        { title: "Portfolio Building", description: "Strong projects and industry connections", icon: FileText }
+        {
+          title: "Innovation Showcase Platform",
+          description: "Demonstrate coding expertise, creative solutions, and technical innovation with live presentations",
+          icon: Lightbulb
+        },
+        {
+          title: "Expert Technical Evaluation",
+          description: "Judged on code quality, originality, functionality, scalability, and practical implementation",
+          icon: Award
+        },
+        {
+          title: "Industry Recognition",
+          description: "Stand out among peers, gain recruiter attention, and build professional technology networks",
+          icon: Eye
+        }
       ]
     },
     {
       icon: Rocket,
-      title: "Real-Time Industry Exposure",
-      description: "Industry collaboration with startup energy and workplace challenge experience",
+      title: "Career Acceleration Opportunities",
+      description: "Direct pathways to employment, skill development, and professional growth through industry partnerships and recruitment-focused competitions",
+      color: "accent",
+      items: [
+        {
+          title: "Attractive Cash Rewards",
+          description: "Compete for substantial prize pools, startup funding opportunities, and technology grants",
+          icon: DollarSign
+        },
+        {
+          title: "Direct Recruitment Pipeline",
+          description: "Job opportunities from participating companies with fast-track interview processes for winners",
+          icon: Briefcase
+        },
+        {
+          title: "Professional Portfolio Building",
+          description: "Create impressive project portfolios, GitHub showcases, and industry connections for career growth",
+          icon: FileText
+        }
+      ]
+    },
+    {
+      icon: Zap,
+      title: "Real-Time Industry Immersion",
+      description: "Experience authentic startup environment, workplace dynamics, and high-pressure development scenarios with comprehensive mentorship and guidance",
       color: "chart1",
       items: [
-        { title: "Industry Experts", description: "Collaboration with experienced professionals", icon: UserCheck },
-        { title: "Startup Energy", description: "Experience workplace challenges and dynamics", icon: Rocket },
-        { title: "Time Constraints", description: "Build ability to deliver under pressure", icon: Timer }
+        {
+          title: "Industry Expert Mentorship",
+          description: "Direct collaboration with experienced professionals, CTOs, and senior developers throughout the competition",
+          icon: UserCheck
+        },
+        {
+          title: "Startup Environment Simulation",
+          description: "Experience fast-paced development cycles, agile methodologies, and deadline-driven project delivery",
+          icon: Rocket
+        },
+        {
+          title: "Pressure Performance Training",
+          description: "Develop crucial ability to deliver high-quality solutions under tight deadlines and competitive pressure",
+          icon: Timer
+        }
       ]
     }
   ];
 
   const benefits = [
-    "Compete in pure development-focused challenges",
-    "Win cash prizes and recognition",
-    "Direct recruitment opportunities from leading companies",
-    "Gain hands-on problem-solving experience",
-    "Network with industry professionals and peers"
+    "Compete in pure development-focused challenges with real coding",
+    "Win substantial cash prizes and valuable technology rewards",
+    "Direct recruitment opportunities from leading tech companies",
+    "Gain hands-on problem-solving experience under industry pressure",
+    "Network with industry professionals, mentors, and potential co-founders",
+    "Build impressive portfolios with competition-winning projects"
   ];
 
-  const outcomes = [
+  const competitionTracks = [
     {
-      title: "Enhanced Skills",
-      description: "Improved coding and innovation capabilities",
-      icon: Brain,
-      progress: 95
-    },
-    {
-      title: "Strong Portfolio",
-      description: "Real hackathon projects for showcasing",
-      icon: FileText,
-      progress: 90
-    },
-    {
-      title: "Placement Opportunities",
-      description: "Greater chances through recruiter participation",
-      icon: TrendingUp,
-      progress: 88
-    },
-    {
-      title: "Tech Confidence",
-      description: "Ability to tackle real-world challenges",
-      icon: Trophy,
-      progress: 92
-    }
-  ];
-
-  const hackathonProcess = [
-    { 
-      number: "1", 
-      title: "Problem Statement", 
-      desc: "Receive real-world challenges to solve within timeframe",
-      icon: Target,
-      color: "primary"
-    },
-    { 
-      number: "2", 
-      title: "Team Formation", 
-      desc: "Collaborate with peers to form development teams",
-      icon: Group,
-      color: "secondary"
-    },
-    { 
-      number: "3", 
-      title: "Development Sprint", 
-      desc: "Code, build, and create solutions under time pressure",
-      icon: Code,
-      color: "accent"
-    },
-    { 
-      number: "4", 
-      title: "Pitch & Judge", 
-      desc: "Present solutions and compete for prizes and recognition",
-      icon: Trophy,
-      color: "chart1"
-    }
-  ];
-
-  const competitionTypes = [
-    {
-      title: "Web Development",
-      description: "Full-stack web applications and responsive designs",
-      technologies: ["React", "Node.js", "APIs", "Databases"],
+      title: "Full-Stack Web Development",
+      description: "Complete web applications with modern frameworks and cloud deployment",
+      technologies: ["React.js", "Node.js", "MongoDB", "AWS", "Docker"],
       icon: Globe,
-      color: "primary"
+      color: "primary",
+      complexity: "Advanced",
+      duration: "48 hours"
     },
     {
       title: "Mobile App Development",
-      description: "Native and cross-platform mobile solutions",
-      technologies: ["React Native", "Flutter", "iOS", "Android"],
-      icon: Phone,
-      color: "secondary"
+      description: "Native and cross-platform mobile solutions with modern UI/UX",
+      technologies: ["React Native", "Flutter", "Firebase", "iOS", "Android"],
+      icon: Smartphone,
+      color: "secondary",
+      complexity: "Intermediate",
+      duration: "36 hours"
     },
     {
-      title: "AI/ML Solutions",
-      description: "Machine learning and artificial intelligence projects",
-      technologies: ["Python", "TensorFlow", "Data Science", "NLP"],
+      title: "AI/ML & Data Science",
+      description: "Machine learning models, data analytics, and intelligent automation",
+      technologies: ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "Jupyter"],
       icon: Brain,
-      color: "accent"
+      color: "accent",
+      complexity: "Expert",
+      duration: "72 hours"
     },
     {
-      title: "IoT & Hardware",
-      description: "Internet of Things and embedded system solutions",
-      technologies: ["Arduino", "Raspberry Pi", "Sensors", "Edge Computing"],
-      icon: Settings,
-      color: "chart1"
+      title: "IoT & Hardware Innovation",
+      description: "Connected devices, embedded systems, and smart automation solutions",
+      technologies: ["Arduino", "Raspberry Pi", "IoT Sensors", "Edge Computing"],
+      icon: Cpu,
+      color: "chart1",
+      complexity: "Advanced",
+      duration: "60 hours"
     }
+  ];
+
+  const successMetrics = [
+    { label: "Hackathons Hosted", value: "200+", description: "Multi-domain competitions", progress: 95 },
+    { label: "Active Participants", value: "12,000+", description: "Talented developers", progress: 90 },
+    { label: "Prize Money Distributed", value: "₹1.2Cr+", description: "Cash rewards & grants", progress: 88 },
+    { label: "Placement Success Rate", value: "82%", description: "Direct recruitment", progress: 82 }
   ];
 
   return (
     <>
       <SEO
-        title="Hackathons - Innovation Through Real-Time Development Competitions"
-        description="Join Fresherbot hackathons for hands-on coding competitions, cash prizes, recruitment opportunities, and real-world problem-solving experience."
+        title="Hackathons - Transform Ideas into Reality Through Competitive Development"
+        description="Join Fresherbot's premium hackathons for hands-on coding competitions, substantial cash prizes, direct recruitment opportunities, and real-world problem-solving experience with industry mentorship."
       />
-      <div className="space-y-16">
+      <div className="space-y-20">
         {/* Hero Section */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative text-center py-16 px-8">
-            <div className="space-y-8 max-w-5xl mx-auto">
-              <div className="space-y-2">
-                <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                  <Zap className="w-4 h-4 mr-2" />
-                  Hackathons
-                </Badge>
+        <section className="relative overflow-hidden md:py-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
+
+          <div className="relative container mx-auto">
+            <div className="grid lg:grid-cols-5 gap-16 items-center">
+              {/* Left Content */}
+              <div className="lg:col-span-3 space-y-10">
+                <div className="space-y-6">
+                  <Badge variant="secondary" className="bg-muted text-foreground inline-flex items-center gap-2 px-4 py-2">
+                    <Rocket className="w-4 h-4" />
+                    Competitive Development Platform
+                  </Badge>
+
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-primary via-accent to-orange-500 bg-clip-text text-transparent">
+                      Innovation Through
+                    </span>
+                    <br />
+                    Real-Time Development
+                  </h1>
+
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
+                    Transform your ideas into reality with <strong className="text-foreground">competitive coding</strong>, <strong className="text-foreground">industry mentorship</strong>, and <strong className="text-foreground">direct recruitment</strong> opportunities.
+                  </p>
+                </div>
+
+                <div className="grid sm:grid-cols-3 gap-6 py-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Code className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Pure Development</div>
+                      <div className="text-xs text-muted-foreground">Hands-on coding only</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Trophy className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Cash Prizes</div>
+                      <div className="text-xs text-muted-foreground">Substantial rewards</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Briefcase className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">Direct Hiring</div>
+                      <div className="text-xs text-muted-foreground">Job opportunities</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className="text-lg px-8 py-6 shadow-lg" asChild>
+                    <Link to="/register-hackathon">
+                      <PlayCircle className="mr-2 h-5 w-5" />
+                      Register Now
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                    <Link to="/host-hackathon">
+                      View Upcoming Events
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="flex items-center gap-6 text-sm text-muted-foreground pt-4">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Free participation
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Industry mentorship
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Certificate & prizes
+                  </div>
+                </div>
               </div>
-              
-              <div className="space-y-4">
-                <h1 className="voila-heading text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Innovation Through Real-Time Development Competitions
-                </h1>
-              </div>
 
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                At <strong className="text-primary">Fresherbot</strong>, our{' '}
-                <Badge variant="outline" className="mx-1">Hackathons</Badge>{' '}
-                provide students with the perfect platform to{' '}
-                <Badge variant="outline" className="mx-1">innovate</Badge>,{' '}
-                <Badge variant="outline" className="mx-1">code</Badge>, and{' '}
-                <Badge variant="outline" className="mx-1">create</Badge>.
-              </p>
+              {/* Right Image */}
+              <div className="lg:col-span-2 relative md:pr-10">
+                <div className="relative">
+                  <img
+                       src={asset('events/hackathons/pointingHacathon.jpeg')}
+                    alt="Hackathon Development Environment"
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                  />
 
-              <Alert className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 to-secondary/5 max-w-4xl mx-auto">
-                <Sparkles className="h-5 w-5" />
-                <AlertDescription className="text-lg">
-                  These real-time competitions encourage participants to <strong>think outside the box, solve real problems, 
-                  and build working solutions</strong> under tight deadlines.
-                </AlertDescription>
-              </Alert>
+                  {/* Floating Stats Cards */}
+                  <div className="absolute -top-4 -left-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">48Hr</div>
+                    <div className="text-sm text-muted-foreground">Competition</div>
+                  </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                <Button size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/register-hackathon">
-                    <Rocket className="mr-2 h-5 w-5" />
-                    Register Now
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
-                  <Link to="/host-hackathon">
-                    <Building2 className="mr-2 h-5 w-5" />
-                    Host a Hackathon
-                  </Link>
-                </Button>
+                  <div className="absolute -bottom-4 -right-4 bg-background/95 backdrop-blur-sm border border-gray-200 rounded-xl p-4 shadow-lg">
+                    <div className="text-2xl font-bold text-primary">₹5L+</div>
+                    <div className="text-sm text-muted-foreground">Prize Pool</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -244,40 +316,184 @@ export const HackathonsPage: React.FC = () => {
 
         <Separator className="my-12" />
 
-        {/* Competition Types */}
+        {/* Competition Tracks Showcase */}
         <section className="space-y-8">
           <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Competition Categories</Badge>
-            <h2 className="text-4xl font-bold">Development Competition Areas</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Choose your specialty and compete in cutting-edge technology domains
+            <Badge variant="secondary" className="px-4 py-2">Development Tracks</Badge>
+            <h2 className="text-4xl font-bold">Choose Your Competition Track</h2>
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              Multiple specialized tracks designed for different technology domains and skill levels. Each track offers unique challenges, industry-relevant problem statements, and specialized mentorship from domain experts.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {competitionTypes.map((type, index) => (
-              <Card key={index} className={`border-2 hover:border-${type.color}/50 transition-all duration-300 hover:shadow-xl group`}>
-                <CardHeader className="text-center space-y-4">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${type.color}/20 to-${type.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                    <type.icon className={`h-10 w-10 text-${type.color}`} />
+          <Tabs defaultValue="web" className="w-full">
+            <TabsList className="grid w-full grid-cols-4 max-w-3xl mx-auto">
+              <TabsTrigger value="web">Web Dev</TabsTrigger>
+              <TabsTrigger value="mobile">Mobile</TabsTrigger>
+              <TabsTrigger value="ai">AI/ML</TabsTrigger>
+              <TabsTrigger value="iot">IoT</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="web" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                    src={asset('events/hackathons/web development.jpg')}
+                      alt="Web Development Track"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
                   </div>
-                  <div className="space-y-2">
-                    <CardTitle className="text-lg">{type.title}</CardTitle>
-                    <CardDescription className="text-sm">{type.description}</CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 gap-2">
-                    {type.technologies.map((tech, techIndex) => (
-                      <div key={techIndex} className="bg-muted/50 border rounded-lg p-2 text-xs text-center hover:bg-muted/80 transition-colors">
-                        {tech}
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Globe className="h-6 w-6 text-primary" />
+                          <Badge variant="outline" className="text-primary border-primary">48 Hours</Badge>
+                          <Badge variant="outline" className="text-accent border-accent">Advanced</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Full-Stack Web Development</CardTitle>
+                        <CardDescription className="text-lg">Complete web applications with modern frameworks and cloud deployment</CardDescription>
                       </div>
-                    ))}
+                      <div className="grid grid-cols-1 gap-4">
+                        {["React.js", "Node.js", "MongoDB", "AWS", "Docker"].map((tech, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                              <Code className="w-4 h-4 text-primary" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{tech}</div>
+                              <div className="text-xs text-muted-foreground">Core technology</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
-            ))}
-          </div>
+            </TabsContent>
+            
+            <TabsContent value="mobile" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                        src={asset('events/hackathons/Hacathon-mobile.jpg')}
+                       alt="Mobile Development Track"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Smartphone className="h-6 w-6 text-secondary" />
+                          <Badge variant="outline" className="text-secondary border-secondary">36 Hours</Badge>
+                          <Badge variant="outline" className="text-accent border-accent">Intermediate</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">Mobile App Development</CardTitle>
+                        <CardDescription className="text-lg">Native and cross-platform mobile solutions with modern UI/UX</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["React Native", "Flutter", "Firebase", "iOS", "Android"].map((tech, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center">
+                              <Smartphone className="w-4 h-4 text-secondary" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{tech}</div>
+                              <div className="text-xs text-muted-foreground">Mobile framework</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="ai" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8">
+                    <img
+                        src={asset('events/hackathons/hacathon-aiml.jpg')}
+                      alt="AI/ML Development Track"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Brain className="h-6 w-6 text-accent" />
+                          <Badge variant="outline" className="text-accent border-accent">72 Hours</Badge>
+                          <Badge variant="outline" className="text-red-500 border-red-500">Expert</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">AI/ML & Data Science</CardTitle>
+                        <CardDescription className="text-lg">Machine learning models, data analytics, and intelligent automation</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Python", "TensorFlow", "PyTorch", "Scikit-learn", "Jupyter"].map((tech, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
+                              <Brain className="w-4 h-4 text-accent" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{tech}</div>
+                              <div className="text-xs text-muted-foreground">AI/ML tool</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="iot" className="mt-8">
+              <Card className="border-2 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="flex items-center justify-center p-8 order-last lg:order-first">
+                    <img
+                      src={asset('events/hackathons/hacathon-iot.jpg')}
+                      alt="IoT Hardware Track"
+                      className="w-full max-w-md h-auto object-contain rounded-2xl shadow-lg"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <div className="space-y-6">
+                      <div className="text-center lg:text-left">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Cpu className="h-6 w-6 text-chart1" />
+                          <Badge variant="outline" className="text-chart1 border-chart1">60 Hours</Badge>
+                          <Badge variant="outline" className="text-accent border-accent">Advanced</Badge>
+                        </div>
+                        <CardTitle className="text-2xl mb-2">IoT & Hardware Innovation</CardTitle>
+                        <CardDescription className="text-lg">Connected devices, embedded systems, and smart automation solutions</CardDescription>
+                      </div>
+                      <div className="grid grid-cols-1 gap-4">
+                        {["Arduino", "Raspberry Pi", "IoT Sensors", "Edge Computing"].map((tech, index) => (
+                          <div key={index} className="bg-muted/50 border rounded-lg p-4 flex items-center gap-3">
+                            <div className="w-8 h-8 bg-chart1/10 rounded-lg flex items-center justify-center">
+                              <Cpu className="w-4 h-4 text-chart1" />
+                            </div>
+                            <div>
+                              <div className="font-semibold">{tech}</div>
+                              <div className="text-xs text-muted-foreground">Hardware platform</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </TabsContent>
+          </Tabs>
         </section>
 
         <Separator className="my-12" />
@@ -287,117 +503,69 @@ export const HackathonsPage: React.FC = () => {
           <div className="text-center space-y-4">
             <Badge variant="secondary" className="px-4 py-2">Competition Features</Badge>
             <h2 className="text-4xl font-bold">Key Features</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive hackathon experience designed for maximum learning and opportunity
+            <p className="text-xl text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              Comprehensive hackathon experience designed for maximum learning, innovation, and career opportunities through competitive development challenges, industry mentorship, and direct recruitment pathways.
             </p>
           </div>
           
-          <div className="space-y-12">
+          <div className="space-y-16">
             {keyFeatures.map((feature, index) => (
-              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300">
-                <CardHeader className="text-center">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                    <feature.icon className={`h-10 w-10 text-${feature.color}`} />
-                  </div>
-                  <CardTitle className="text-2xl">{index + 1}. {feature.title}</CardTitle>
-                  <CardDescription className="text-lg">{feature.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {feature.items.map((item, itemIndex) => (
-                      <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors">
-                        <CardContent className="p-6 space-y-3">
-                          <div className={`w-12 h-12 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-lg flex items-center justify-center`}>
-                            <item.icon className={`h-6 w-6 text-${feature.color}`} />
-                          </div>
-                          <div className="space-y-2">
-                            <h4 className="font-semibold">{item.title}</h4>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Hackathon Process */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Competition Flow</Badge>
-            <h2 className="text-4xl font-bold">How Our Hackathons Work</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Structured competition format designed for maximum innovation and collaboration
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {hackathonProcess.map((step, index) => (
-              <div key={index} className="relative">
-                <Card className={`text-center border-2 hover:border-${step.color}/50 transition-all duration-300 hover:shadow-xl group`}>
-                  <CardHeader className="space-y-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br from-${step.color}/20 to-${step.color}/10 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}>
-                      <span className={`text-3xl font-bold text-${step.color}`}>{step.number}</span>
+              <Card key={index} className="border-2 hover:shadow-xl transition-all duration-300 overflow-hidden my-6">
+                <div className={`grid lg:grid-cols-5 gap-8 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                  {/* Feature Image */}
+                  <div className={`lg:col-span-2 relative ${index % 2 === 1 ? 'lg:col-start-4' : ''} flex items-center justify-center p-6`}>
+                    <div className="relative w-full max-w-sm mx-auto">
+                      <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl">
+                        <div className={`absolute inset-0 bg-gradient-to-br from-${feature.color}/20 via-${feature.color}/10 to-transparent z-10`} />
+                        <img
+                          src={
+                            index === 0 ? asset('events/hackathons/hacathoncompitition.jpg') :
+                            index === 1 ? asset('events/hackathons/hacathon-showcase.jpg') :
+                            index === 2 ? asset('events/hackathons/hacathon-acceleration.jpg') :
+                            index === 3 ? asset('events/hackathons/hacathon-realtime.jpg') :
+                            "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                          }
+                          alt={`${feature.title} illustration`}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className={`absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-${feature.color}/40 to-${feature.color}/30 rounded-2xl flex items-center justify-center z-20 backdrop-blur-sm border border-white/20`}>
+                          <feature.icon className={`h-7 w-7 text-${feature.color}`} />
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-3">
-                      <CardTitle className="text-lg">{step.title}</CardTitle>
-                      <CardDescription className="text-base leading-relaxed">{step.desc}</CardDescription>
+                  </div>
+
+                  {/* Feature Content */}
+                  <div className={`lg:col-span-3 p-4 md:p-8 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <Badge variant="secondary" className="px-3 py-1">
+                          Feature {index + 1}
+                        </Badge>
+                        <CardTitle className="text-3xl font-bold">{feature.title}</CardTitle>
+                        <CardDescription className="text-lg leading-relaxed">{feature.description}</CardDescription>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {feature.items.map((item, itemIndex) => (
+                          <Card key={itemIndex} className="border bg-muted/30 hover:bg-muted/50 transition-colors py-3 px-1 my-1">
+                            <CardContent className="px-3 py-2 flex items-start gap-3">
+                              <div className={`w-8 h-8 bg-gradient-to-br from-${feature.color}/20 to-${feature.color}/10 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                                <item.icon className={`h-4 w-4 text-${feature.color}`} />
+                              </div>
+                              <div className="space-y-1">
+                                <h4 className="font-semibold text-base leading-tight">{item.title}</h4>
+                                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
                     </div>
-                  </CardHeader>
-                </Card>
-                {index < 3 && (
-                  <ChevronRight className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-muted-foreground h-8 w-8" />
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <Separator className="my-12" />
-
-        {/* Industry Collaboration Highlight */}
-        <section className="space-y-8">
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Industry Partnership</Badge>
-            <h2 className="text-4xl font-bold">Real-Time Industry Exposure</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Experience startup energy and workplace challenges with industry expert collaboration
-            </p>
-          </div>
-
-          <Alert className="border-2 border-secondary/20 bg-gradient-to-r from-secondary/5 to-accent/5 max-w-4xl mx-auto">
-            <Rocket className="h-5 w-5" />
-            <AlertDescription className="text-lg">
-              Hackathons are conducted in <strong>collaboration with industry experts</strong>. Students experience{' '}
-              <strong>startup-like energy and workplace challenges</strong>, building the ability to{' '}
-              <strong>deliver solutions under time constraints</strong>.
-            </AlertDescription>
-          </Alert>
-
-          <div className="text-center">
-            <Card className="bg-muted/30 border-2 max-w-3xl mx-auto">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 justify-center mb-4">
-                  <Avatar className="h-16 w-16 border-2 border-secondary/20">
-                    <AvatarImage src="api/placeholder/64/64" />
-                    <AvatarFallback className="bg-secondary/10 text-secondary font-bold text-lg">IE</AvatarFallback>
-                  </Avatar>
-                  <div className="text-left">
-                    <div className="font-semibold text-lg">Industry Experts</div>
-                    <div className="text-sm text-muted-foreground">Real Workplace Experience</div>
                   </div>
                 </div>
-                <p className="text-base text-muted-foreground italic">
-                  "Students experience <strong className="text-secondary">startup-like energy</strong> and build{' '}
-                  <strong className="text-accent">pressure-handling capabilities</strong> essential for tech careers."
-                </p>
-              </CardContent>
-            </Card>
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -406,15 +574,15 @@ export const HackathonsPage: React.FC = () => {
         {/* Why Join */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-2xl" />
-          <div className="relative p-10 space-y-8">
+          <div className="relative p-4 md:p-10 space-y-8">
             <div className="text-center space-y-4">
               <Badge variant="secondary" className="px-4 py-2">
-                <Trophy className="w-4 h-4 mr-2" />
-                Why Join
+                <Award className="w-4 h-4 mr-2" />
+                Why Join Us
               </Badge>
               <h2 className="text-4xl font-bold">Why Join Fresherbot Hackathons?</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Comprehensive benefits that accelerate your tech career through competitive coding
+                Comprehensive benefits that accelerate your tech career through competitive development
               </p>
             </div>
             
@@ -435,104 +603,98 @@ export const HackathonsPage: React.FC = () => {
 
         <Separator className="my-12" />
 
-        {/* Outcomes */}
+        {/* Success Metrics */}
         <section className="space-y-8">
           <div className="text-center space-y-4">
-            <Badge variant="secondary" className="px-4 py-2">Competition Results</Badge>
-            <h2 className="text-4xl font-bold">Outcomes</h2>
+            <Badge variant="secondary" className="px-4 py-2">Success Metrics</Badge>
+            <h2 className="text-4xl font-bold">Hackathon Impact</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Measurable benefits that transform students into confident tech professionals
+              Real results from our competitive development platform
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {outcomes.map((outcome, index) => (
-              <Card key={index} className="border-2 text-center hover:shadow-xl transition-all duration-300">
+            {successMetrics.map((metric, index) => (
+              <Card key={index} className="border-2 text-center hover:shadow-xl transition-all duration-300 group">
                 <CardHeader className="space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto">
-                    <outcome.icon className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                    <BarChart3 className="h-8 w-8 text-primary" />
                   </div>
                   <div className="space-y-3">
-                    <CardTitle className="text-lg">{outcome.title}</CardTitle>
-                    <CardDescription className="text-sm">{outcome.description}</CardDescription>
+                    <div className="text-3xl font-bold text-primary">{metric.value}</div>
+                    <CardTitle className="text-lg">{metric.label}</CardTitle>
+                    <CardDescription className="text-sm">{metric.description}</CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent className="pb-6">
-                  <div className="space-y-3">
-                    <div className="text-2xl font-bold text-primary">{outcome.progress}%</div>
-                    <Progress value={outcome.progress} className="h-3" />
-                  </div>
-                </CardContent>
               </Card>
             ))}
           </div>
         </section>
 
-        {/* Success Metrics */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-10">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">Hackathon Success Metrics</h3>
-              <p className="text-muted-foreground">Real results from our development competitions</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { label: "Hackathons Hosted", value: "150+", progress: 95 },
-                { label: "Participants", value: "8,000+", progress: 90 },
-                { label: "Prize Money Awarded", value: "₹50L+", progress: 85 },
-                { label: "Recruitment Success", value: "78%", progress: 78 }
-              ].map((stat, index) => (
-                <Card key={index} className="text-center border-2 bg-background/90 backdrop-blur-sm">
-                  <CardContent className="pt-6 space-y-3">
-                    <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-                    <Progress value={stat.progress} className="h-2" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Final CTA */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl" />
-          <div className="relative p-12 text-center space-y-8">
-            <div className="space-y-4">
-              <Badge variant="secondary" className="px-4 py-2 text-base">
-                <Zap className="w-4 h-4 mr-2" />
-                Ready to Compete?
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold">Turn Your Ideas into Reality</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Join thousands of developers who have transformed their careers through{' '}
-                <strong>competitive coding, innovation challenges, and direct recruitment opportunities</strong>. 
-                Compete, innovate, and get hired with Fresherbot Hackathons.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-              <Button size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/register-hackathon">
-                  <Rocket className="mr-2 h-5 w-5" />
-                  Register Now
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-10 py-6" asChild>
-                <Link to="/host-hackathon">
-                  <Building2 className="mr-2 h-5 w-5" />
-                  Host a Hackathon
-                </Link>
-              </Button>
-            </div>
-            
-            <div className="pt-6">
-              <div className="text-sm text-muted-foreground">
-                <Code className="inline h-4 w-4 mr-1" />
-                <strong>Pure Development</strong> • <strong>Cash Prizes</strong> • <strong>Direct Recruitment</strong>
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl -z-10" />
+
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center p-4 md:p-12">
+            {/* Left Content */}
+            <div className="space-y-8 text-center lg:text-left relative z-20">
+              <div className="space-y-4">
+                <Badge variant="secondary" className="px-4 py-2 text-base">
+                  <Zap className="w-4 h-4 mr-2" />
+                  Ready to Compete?
+                </Badge>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Turn Your Ideas into Reality</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Join thousands of developers who have transformed their careers through competitive coding,
+                  innovation challenges, and direct recruitment opportunities. Code, compete, and get hired with Fresherbot.
+                </p>
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 relative z-30">
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/register-hackathon">
+                    <PlayCircle className="mr-2 h-5 w-5" />
+                    Register Now
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link to="/host-hackathon">
+                    <Building2 className="mr-2 h-5 w-5" />
+                    Host a Hackathon
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="pt-6">
+                <div className="text-sm text-muted-foreground flex flex-wrap justify-center lg:justify-start gap-4">
+                  <span>✅ <strong>Pure Development Focus</strong></span>
+                  <span>✅ <strong>Industry Mentorship</strong></span>
+                  <span>✅ <strong>Direct Recruitment</strong></span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative order-first lg:order-last">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+
+<video
+  src={asset('events/hackathons/hacathon.mp4')}
+  className="w-full h-full object-cover"
+  autoPlay
+  loop
+  muted
+  playsInline
+ 
+>
+  Video not supported
+</video>
+              </div>
+
+              {/* Floating Elements - Behind content */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent/10 rounded-full blur-xl -z-10" />
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-xl -z-10" />
             </div>
           </div>
         </section>
