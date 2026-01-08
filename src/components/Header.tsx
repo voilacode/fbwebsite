@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Header as UIHeader, HeaderLogo, HeaderNav } from '@voilajsx/uikit/header';
 import type { NavigationItem } from '@voilajsx/uikit';
@@ -17,12 +17,15 @@ import {
   Building2,
   Target,
   UserPlus,
-  LogIn
+  LogIn,
+  LogOut,
+  LayoutDashboard
 } from 'lucide-react';
 import { asset } from '../utils/asset';
+import { useAuth } from '../context/AuthContext';
 
-// Navigation configuration
-const navigationItems: NavigationItem[] = [
+// Base navigation configuration (always visible)
+const baseNavigationItems: NavigationItem[] = [
   { key: 'home', label: 'Home', href: '/', icon: Home },
   {
     key: 'products',
@@ -55,20 +58,29 @@ const navigationItems: NavigationItem[] = [
     ]
   },
   { key: 'contact', label: 'Contact', href: '/contact', icon: Mail },
+];
+
+// Auth items for logged-out users
+const guestAuthItems: NavigationItem[] = [
   { key: 'login', label: 'Login', href: '/login', icon: LogIn },
   { key: 'register', label: 'Register', href: '/register', icon: UserPlus },
 ];
 
+// Auth items for logged-in users
+const userAuthItems: NavigationItem[] = [
+  { key: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { key: 'logout', label: 'Logout', href: '/logout', icon: LogOut },
+];
+
 // Logo component
 const Logo: React.FC = () => (
-  <div className="flex items-center gap-3">
+  <a href="/" className="flex items-center gap-3">
     <img
       src={asset('logo_fresherbot_light.png')}
       alt="Fresherbot"
       className="h-8 w-auto"
     />
-   
-  </div>
+  </a>
 );
 
 // Theme actions component
@@ -80,9 +92,20 @@ const ThemeActions: React.FC = () => {
 export const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  
+  const { isAuthenticated } = useAuth();
+
+  // Build navigation items based on auth state
+  const navigationItems = useMemo(() => {
+    const authItems = isAuthenticated ? userAuthItems : guestAuthItems;
+    return [...baseNavigationItems, ...authItems];
+  }, [isAuthenticated]);
+
   const handleNavigation = (href: string) => {
-    navigate(href);
+    if (href.startsWith('http')) {
+      window.open(href, '_blank');
+    } else {
+      navigate(href);
+    }
   };
 
   return (
@@ -90,13 +113,13 @@ export const Header: React.FC = () => {
       <HeaderLogo>
         <Logo />
       </HeaderLogo>
-      
+
       <HeaderNav
         navigation={navigationItems}
         currentPath={location.pathname}
         onNavigate={handleNavigation}
       />
-      
+
       <div className="flex items-center">
         <ThemeActions />
       </div>

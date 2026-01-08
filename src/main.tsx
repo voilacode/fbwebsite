@@ -1,16 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { ThemeProvider } from '@voilajsx/uikit/theme-provider';
+import { AuthProvider } from './context/AuthContext';
 import App from './App';
 import './index.css';
 import './styles/globals.css';
 import '@voilajsx/uikit/styles';
 import './styles/fonts.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root')!;
+
+const AppWithProviders = (
   <React.StrictMode>
     <ThemeProvider theme="elegant" mode="light" forceConfig={true}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
+
+// Use hydration if page was pre-rendered (has data-server-rendered attribute)
+if (rootElement.hasAttribute('data-server-rendered')) {
+  hydrateRoot(rootElement, AppWithProviders);
+} else {
+  createRoot(rootElement).render(AppWithProviders);
+}
