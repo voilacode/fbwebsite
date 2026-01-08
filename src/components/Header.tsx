@@ -100,9 +100,15 @@ export const Header: React.FC = () => {
     return [...baseNavigationItems, ...authItems];
   }, [isAuthenticated]);
 
+  // Auth routes that should go directly to Laravel (full page navigation)
+  const laravelRoutes = ['/login', '/register', '/logout', '/dashboard'];
+
   const handleNavigation = (href: string) => {
     if (href.startsWith('http')) {
       window.open(href, '_blank');
+    } else if (laravelRoutes.includes(href)) {
+      // Full page navigation to Laravel routes
+      window.location.href = href;
     } else {
       navigate(href);
     }

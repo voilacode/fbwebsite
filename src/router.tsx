@@ -7,8 +7,6 @@ import Components from './pages/Components';
 import Themes from './pages/Themes';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
 import ErrorPage from './pages/ErrorPage';
 import AssessmentToolPage from './pages/AssessmentToolPage';
 import LMSPlatformPage from './pages/LMSPlatformPage';
@@ -21,14 +19,13 @@ import HackathonsPage from './pages/HackathonsPage';
 import FounderTalksPage from './pages/FounderTalksPage';
 
 // Simple route configuration - users can easily add/remove routes here
+// Note: /login, /register, /dashboard, /logout are handled by Laravel
 export const routes = [
   { path: '/', component: Home },
   { path: '/components', component: Components },
   { path: '/themes', component: Themes },
   { path: '/about', component: About },
   { path: '/contact', component: Contact },
-  { path: '/login', component: Login },
-  { path: '/dashboard', component: Dashboard },
   { path: '/products/assessment', component: AssessmentToolPage},
   { path: '/products/lms', component: LMSPlatformPage },
   { path: '/products/tms', component: TMSPlatformPage },
