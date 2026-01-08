@@ -8,6 +8,20 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// Build target: 'local' for dist/, 'voilaco' for Laravel integration
+const buildTarget = process.env.BUILD_TARGET || 'local'
+
+// Client slug for multi-tenant deployment (default: core)
+const clientSlug = process.env.CLIENT_SLUG || 'core'
+
+// Determine output directory based on build target
+const getOutDir = () => {
+  if (buildTarget === 'voilaco') {
+    return path.resolve(__dirname, `../voilaco/public/websites/${clientSlug}`)
+  }
+  return 'dist'
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
@@ -17,15 +31,26 @@ export default defineConfig({
     },
   },
 
-  base: '/', // Ensure this matches your GitHub repository name or subdirectory
+  // Base path for assets - uses /websites/{slug}/ when deployed to voilaco
+  base: buildTarget === 'voilaco' ? `/websites/${clientSlug}/` : '/',
+
   server: {
     port: 5173,
     host: true,
+    // Proxy API requests to Laravel during development
+    proxy: {
+      '/api': {
+        target: 'http://core.voilaco.test',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
   build: {
-    outDir: 'dist',
-    sourcemap: true,
+    outDir: getOutDir(),
+    sourcemap: buildTarget !== 'voilaco', // No sourcemaps in production
     assetsDir: 'assets',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         manualChunks: {

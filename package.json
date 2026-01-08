@@ -6,10 +6,16 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:prerender": "npm run build && node scripts/prerender.js",
+    "build:voilaco": "BUILD_TARGET=voilaco tsc && BUILD_TARGET=voilaco vite build",
+    "build:voilaco:core": "CLIENT_SLUG=core npm run build:voilaco",
     "preview": "vite preview",
     "bundle": "npx uikit bundle",
     "serve": "npx uikit serve",
-    "deploy": "npx uikit deploy"
+    "deploy": "npx uikit deploy",
+    "predeploy": "npm run build:prerender",
+    "ghpages": "gh-pages -d dist",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@fontsource/caveat": "^5.2.8",
@@ -40,6 +46,8 @@
     "@types/react-dom": "^19.1.6",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.2.1",
+    "puppeteer": "^23.0.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.7.2",
     "vite": "^6.3.6"
