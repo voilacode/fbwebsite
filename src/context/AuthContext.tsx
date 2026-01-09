@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import { api } from '../services/api';
 
 /**
  * Auth Context for managing authentication state
@@ -6,6 +7,8 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
  * Uses a cookie-based approach where Laravel sets a 'logged_in' cookie
  * on successful login. This cookie is just a UI hint - actual security
  * is handled by Laravel's session/Sanctum middleware.
+ *
+ * On mount, validates the session with the server to sync auth state.
  */
 
 interface User {
@@ -16,8 +19,14 @@ interface User {
 interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
+  isLoading: boolean;
   checkAuth: () => void;
   logout: () => void;
+}
+
+interface AuthCheckResponse {
+  authenticated: boolean;
+  user: { name: string } | null;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -28,6 +37,13 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 function getCookie(name: string): string | null {
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
   return match ? decodeURIComponent(match[2]) : null;
+}
+
+/**
+ * Delete a cookie by name
+ */
+function deleteCookie(name: string): void {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
 /**
@@ -51,6 +67,49 @@ function getUserFromCookie(): User | null {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => checkLoggedInCookie());
   const [user, setUser] = useState<User | null>(() => getUserFromCookie());
+  const [isLoading, setIsLoading] = useState<boolean>(() => checkLoggedInCookie()); // Only loading if cookie exists
+  const hasValidated = useRef(false);
+
+  /**
+   * Clear auth cookies and state when session is invalid
+   */
+  const clearAuthState = useCallback(() => {
+    deleteCookie('logged_in');
+    deleteCookie('user_name');
+    setIsAuthenticated(false);
+    setUser(null);
+  }, []);
+
+  /**
+   * Validate session with server
+   */
+  const validateSession = useCallback(async () => {
+    // Only validate if cookies suggest user is logged in
+    if (!checkLoggedInCookie()) {
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await api.get<AuthCheckResponse>('/auth-check');
+
+      if (response.success && response.data) {
+        if (response.data.authenticated) {
+          // Session is valid - update state with server data
+          setIsAuthenticated(true);
+          setUser(response.data.user ? { name: response.data.user.name } : {});
+        } else {
+          // Session expired - clear stale cookies
+          clearAuthState();
+        }
+      }
+    } catch {
+      // On error, trust the cookies (offline-friendly)
+      console.warn('Auth check failed, using cookie state');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [clearAuthState]);
 
   /**
    * Check authentication status from cookie
@@ -69,14 +128,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     window.location.href = '/logout';
   }, []);
 
-  // Check auth on mount and when tab becomes visible
+  // Validate session on mount
   useEffect(() => {
-    checkAuth();
+    if (!hasValidated.current) {
+      hasValidated.current = true;
+      validateSession();
+    }
+  }, [validateSession]);
 
-    // Re-check when tab becomes visible (in case of logout in another tab)
+  // Re-check when tab becomes visible (in case of logout in another tab or session expiry)
+  useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
-        checkAuth();
+        validateSession();
       }
     };
 
@@ -84,10 +148,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [checkAuth]);
+  }, [validateSession]);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, checkAuth, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, isLoading, checkAuth, logout }}>
       {children}
     </AuthContext.Provider>
   );
